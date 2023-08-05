@@ -93,8 +93,9 @@ abs_minimum_labse_anchor = 0.8
 def print_progress(infoclass):
     infoclass.update_times()
     print('{0: <26}'.format(infoclass.file_processing_stage) + '{0: <25}'.format(infoclass.input_file) + '{0: <18}'.format(str(infoclass.source_file_length) + ":" + str(infoclass.target_file_length)), '{0: <18}'.format("Files left: " + str(infoclass.files_left)),
-          " Path node {}/{}".format(str(infoclass.current_path_knot), str(infoclass.total_path_knots)),
-          (" {}/{}".format(str(datetime.datetime.now() - infoclass.file_start_time))), end='\r') #, infoclass.align_estimated_time)), end='\r')
+          end='\r')
+            #" Path node {}/{}".format(str(infoclass.current_path_knot), str(infoclass.total_path_knots)),
+          #(" {}/{}".format(str(datetime.datetime.now() - infoclass.file_start_time))), end='\r') #, infoclass.align_estimated_time)), end='\r')
 
 def load_labse_model(proc_device, labse_model):
     tokenizer = BertTokenizerFast.from_pretrained(labse_model)
