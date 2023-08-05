@@ -2,7 +2,7 @@
 
 import argparse
 from os import listdir
-from os.path import isfile, join, exists
+from os.path import isfile, join, exists, mkdir
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--corpus-folder', '-dir')
