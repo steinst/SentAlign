@@ -550,7 +550,11 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
 def greedy_procedure(file_name, anchor_list, file_minimum_anchor_score, anchor_score_subtraction, temp_cutoff4anchoring, cutoffpenalty):
     anchor_source_list, anchor_target_list, anchor_source_list_lines, anchor_target_list_lines, anchor_src_emb_dict, anchor_trg_emb_dict = create_anchor_files(file_name, 1, True)
     processInfo.set_status('Greedy Anchoring')
+    print('anchor_source_list:')
     print(anchor_source_list)
+    print('anchor_target_list:')
+    print(anchor_target_list)
+    print('hmmm')
     # this will not work if we have overlaps (other than 1)
     labse_score_matrix = np.asarray(create_labse_score_matrix(anchor_source_list, anchor_target_list, anchor_src_emb_dict, anchor_trg_emb_dict))
     #print('labse_score_matrix.shape', labse_score_matrix.shape)
