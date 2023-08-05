@@ -271,7 +271,7 @@ def get_pairs(path, source_dict, target_dict):
 
 
 def write_path_to_file(path, file_name):
-    path = path.replace(':', ']:[')
+    path = path.replace(':', ']:[').strip()
     with open(output_folder + '/' + file_name + '.path', 'w') as fo:
         fo.write(path + '\n')
 
