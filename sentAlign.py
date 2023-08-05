@@ -271,12 +271,13 @@ def get_pairs(path, source_dict, target_dict):
 
 
 def write_path_to_file(path, file_name):
-    with open(output_folder + '/overlaps.' + file_name + '.path', 'w') as fo:
+    path = path.replace(':', ']:[')
+    with open(output_folder + '/' + file_name + '.path', 'w') as fo:
         fo.write(path + '\n')
 
 
 def write_pairs_to_file(pairs, file_name):
-    with open(output_folder + '/overlaps.' + file_name + '.aligned', 'w') as fo:
+    with open(output_folder + '/' + file_name + '.aligned', 'w') as fo:
         for p in pairs:
             outstring = p[0] + '\t' + p[1] + '\n'
             if outstring.find('NULLALIGN') == -1:
