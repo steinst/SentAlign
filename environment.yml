@@ -3,6 +3,3 @@ channels:
   - conda-forge
 dependencies:
   - python=3.8
-  - numpy=1.21.0
-  - pytorch=1.13.0
-  - transformers=4.24.0
