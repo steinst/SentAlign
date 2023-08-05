@@ -15,8 +15,8 @@ output_folder = args.corpus_folder + '/' + args.output_folder
 source_language_folder = corpus_folder + '/' + args.source_language
 
 files_to_process = [f for f in listdir(source_language_folder) if isfile(join(source_language_folder, f))]
-files_not_to_process = [f.replace('.aligned', '').replace('overlaps.', '') for f in listdir(output_folder) if
-                        f.endswith('.aligned')]
+#files_not_to_process = [f.replace('.aligned', '').replace('overlaps.', '') for f in listdir(output_folder) if
+#                        f.endswith('.aligned')]
 
 with open(corpus_folder + '/files2align.txt', 'w') as f:
     for file in files_to_process:
