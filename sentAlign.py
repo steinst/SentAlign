@@ -98,7 +98,7 @@ def print_progress(infoclass):
           #(" {}/{}".format(str(datetime.datetime.now() - infoclass.file_start_time))), end='\r') #, infoclass.align_estimated_time)), end='\r')
 
 def load_labse_model(proc_device, labse_model):
-    print("Loading LaBSE model")
+    print("Loading LaBSE model...", end='\r')
     tokenizer = BertTokenizerFast.from_pretrained(labse_model)
     model = BertModel.from_pretrained(labse_model)
     model = model.eval()
