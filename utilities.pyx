@@ -1,9 +1,5 @@
 # cython: language_level=3
 
-"""
-A Cython implementation of the Gale-Church algorithm
-"""
-
 cimport cython
 import numpy as np
 cimport numpy as np

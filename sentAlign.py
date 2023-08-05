@@ -17,7 +17,7 @@ import string
 import random
 import time
 import pyximport
-import psutil
+#import psutil
 
 pyximport.install(setup_args={'include_dirs':np.get_include()}, inplace=True, reload_support=True)
 from galechurch import gale_church
@@ -36,7 +36,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--corpus-folder', '-dir')
 parser.add_argument('--source-language', '-sl', default='eng')
 parser.add_argument('--target-language', '-tl', default='isl')
-parser.add_argument('--filename', '-f', help='Name of source and target file(s) to be aligned', type=str, nargs='+')
+parser.add_argument('--filename', '-f', help='Name of source and target file(s) to be aligned', type=str, nargs='+', required=True)
 #parser.add_argument('--temporary-folder', '-tmp', default='tmp2')
 parser.add_argument('--output-folder', '-out', default='output')
 #Aligner settings
@@ -550,7 +550,7 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
 def greedy_procedure(file_name, anchor_list, file_minimum_anchor_score, anchor_score_subtraction, temp_cutoff4anchoring, cutoffpenalty):
     anchor_source_list, anchor_target_list, anchor_source_list_lines, anchor_target_list_lines, anchor_src_emb_dict, anchor_trg_emb_dict = create_anchor_files(file_name, 1, True)
     processInfo.set_status('Greedy Anchoring')
-    #print(anchor_source_list)
+    print(anchor_source_list)
     # this will not work if we have overlaps (other than 1)
     labse_score_matrix = np.asarray(create_labse_score_matrix(anchor_source_list, anchor_target_list, anchor_src_emb_dict, anchor_trg_emb_dict))
     #print('labse_score_matrix.shape', labse_score_matrix.shape)

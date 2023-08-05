@@ -7,3 +7,4 @@ dependencies:
   - Cython=0.29.15
   - sacrebleu=2.3.1
   - pytorch=1.13.0
+  - transformers=4.24.0

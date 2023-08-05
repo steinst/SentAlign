@@ -15,10 +15,13 @@ The environment can be built using the provided environment.yml file:
 conda env create -f environment.yml
 ```
 
-
+### Running the alignment
+```
+conda activate SentAlign
+```
 Start by creating a list of files to align:
 python3 files2align.py -dir /path/to/files/to/align
 
-Then you run the alignments. Aligning English and Icelandic files, using 12 processes would look like this:
+Then you run the alignments. Aligning English and Icelandic files:
 
-python3 sentAlign.py -dir /path/to/files/to/align -proc 12 -sl eng -tl isl
+python3 sentAlign.py -dir /path/to/files/to/align -sl eng -tl isl
