@@ -2,12 +2,15 @@
 
 cimport cython
 import numpy as np
-cimport numpy as np
+from cython.view cimport array as cvarray
+#cimport numpy as np
 
+cdef extern from "Python.h":
+    object PyUnicode_AsUTF8String(object unicode)
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def create_labse_score_matrix(anchor_source_list: list[str], anchor_target_list: list[str], src_emb_dict, trg_emb_dict):
+def create_labse_score_matrix(anchor_source_list: list[str], anchor_target_list: list[str], src_emb_dict: dict, trg_emb_dict: dict):
     cdef str i, j
     cdef int i_ctr, j_ctr
     cdef double[:,:] labse_score_matrix = np.zeros((len(anchor_source_list), len(anchor_target_list)), dtype=np.float64)
