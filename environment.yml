@@ -1,0 +1,11 @@
+name: SentAlign
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - numpy=1.21.0
+  - Cython=0.29.15
+  - sacrebleu=2.3.1
+  - pytorch=1.13.0
+  - pytorch-lightning=1.8.3
+  - nvidia-cuda-toolkit=11.8.0

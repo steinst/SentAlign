@@ -219,5 +219,4 @@ def gale_church(corpus_x, corpus_y, int longlength, scorecutoff):
         for block_x, block_y in zip(read_blocks(fx), read_blocks(fy)):
             for alignment, highest_score, len_x, len_y in align(block_x, block_y, longlength, scorecutoff, basename(corpus_x)):
                 alignments_out += alignment + '\n'
-    #print('output', alignments_out, highest_score, len_x, len_y)
     return alignments_out, highest_score, len_x, len_y

@@ -40,7 +40,7 @@ parser.add_argument('--filename', '-f', help='Name of source and target file(s) 
 #parser.add_argument('--temporary-folder', '-tmp', default='tmp2')
 parser.add_argument('--output-folder', '-out', default='output')
 #Aligner settings
-parser.add_argument('-n', '--num_overlaps', type=int, default=4, help='Maximum number of allowed overlaps.') #sama og að neðan
+#parser.add_argument('-n', '--num_overlaps', type=int, default=4, help='Maximum number of allowed overlaps.') #sama og að neðan
 parser.add_argument('--max-concatenations', '-concats', type=int, help='Maximum number of concatenated sentences per language', default=4)
 parser.add_argument('--free-concatenations', '-freejoins', type=int, help='Maximum number of concatenations before penalty is applied', default=2)
 parser.add_argument('--score-cutoff', '-cutoff', type=float, help='Minimum similarity score for a sentence pair to be considered', default=0.4)
@@ -48,10 +48,11 @@ parser.add_argument('--minimum-length-words', '-minwords', type=int, help='Minim
 parser.add_argument('--maximum-length-words', '-maxwords', type=int, help='Maximum number of words per language, for a sentence pair to be considered', default=110)
 parser.add_argument('--penalty-after-words', '-penwords', type=int, help='Maximum number of words per language, before a length penalty is applied', default=80)
 parser.add_argument('--penalty-per-word', '-wordpen', type=float, help='Penalty applied for each word when maximum number of unpenalized words have been reached', default=0.01)
+parser.add_argument('--anchoring-delimiter', '-anchor', type=int, help='Maximum nodes in the alignment graph, before applying hard delimiters.', default=4000000)
 parser.add_argument('--maximum-length-gale-church', '-maxgc', type=float, help='Maximum number of sentences in file for Gale-Church alignment. If longer, only greedy alignment selection applied', default=10000)
 # Other settings
 parser.add_argument('--reload-model', '-reload', default=True)
-parser.add_argument('--proc-device', '-device', default='cuda') # setja option: cuda eða cpu
+parser.add_argument('--proc-device', '-device', default='cuda')
 parser.add_argument('--num-proc', '-proc', default=8)
 args = parser.parse_args()
 
@@ -83,7 +84,7 @@ max_length = 128
 batch_size = 128
 printline = ''
 
-cutoff4anchoring = 1000000
+cutoff4anchoring = args.anchoring_delimiter
 cutoff_penalty = 1.25
 minimum_labse_anchor = 0.95
 labse_subtraction = 0.05
@@ -451,7 +452,6 @@ def create_anchor_files(file_name, sentence_overlap, lengthfilter):
                         anchor_src_overlaps_file_linenumbers.write(src_linunum_file[line_ctr])
                         anchor_source_list_lines.append(src_linunum_file[line_ctr])
                         src_emb_dict[src_overlaps_used[line_ctr].strip()] = embs[line_ctr]
-        #print('Anchor 1 RAM Used (GB):', psutil.virtual_memory()[3] / 1000000000)
 
         embs = np.load(trg_overlaps_file + '.labse_emb', allow_pickle=True)
         curr_emb_dict = {}
@@ -472,14 +472,12 @@ def create_anchor_files(file_name, sentence_overlap, lengthfilter):
                         anchor_trg_overlaps_file_linenumbers.write(trg_linunum_file[line_ctr])
                         anchor_target_list_lines.append(trg_linunum_file[line_ctr])
                         trg_emb_dict[trg_overlaps_used[line_ctr].strip()] = embs[line_ctr]
-        #print('Anchor 2 RAM Used (GB):', psutil.virtual_memory()[3] / 1000000000)
     # return overlaps as specified, and less
     # apply length filter as specified
     return anchor_source_list, anchor_target_list, anchor_source_list_lines, anchor_target_list_lines, src_emb_dict, trg_emb_dict
 
 
 def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, anchor_score_subtraction, temp_cutoff4anchoring, cutoffpenalty):
-
     processInfo.set_status('Greedy Anchoring')
     torch.cuda.empty_cache()
     maxNumberOfKnots = 9223372036854775807
@@ -686,11 +684,13 @@ def process_file(filename, minimum_labse_anchor):
     #source
     src_input_file = source_language_folder + '/' + file_name
     src_overlaps_file = temporary_folder + '/overlaps.' + file_name + '.src'
-    get_overlaps(src_overlaps_file, src_input_file, args.num_overlaps)
+    get_overlaps(src_overlaps_file, src_input_file, max_concats)
+    #get_overlaps(src_overlaps_file, src_input_file, args.num_overlaps)
     #target
     trg_input_file = target_language_folder + '/' + file_name
     trg_overlaps_file = temporary_folder + '/overlaps.' + file_name + '.trg'
-    get_overlaps(trg_overlaps_file, trg_input_file, args.num_overlaps)
+    get_overlaps(trg_overlaps_file, trg_input_file, max_concats)
+    #get_overlaps(trg_overlaps_file, trg_input_file, args.num_overlaps)
 
     #print('Creating LaBSE embeddings')
     ## create LaBSE embeddings ##
