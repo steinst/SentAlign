@@ -1,0 +1,180 @@
+0	Ef þeim líkar ekki völlurinn verður keppnin færð á Ísafjörð.
+1	Það má nú ekki gerast.
+2	Nei... það má ekki gerast.
+3	-Ísfirðingar eru sko hálfvitar.
+4	Þeir eru kannski ekki hálfvitar, 
+5	en geta verið ansi erfiðir... 
+6	þegar þeir koma hingað á mót.
+7	-Erfiðir?
+8	Þettu eru skíthælar.
+9	Þrándur hefur staðið sig í stykkinu við að innræta þeim sitt skítlega eðli.
+10	Þrándur?
+11	-Það er fáviti.
+12	Formaður golfklúbbsins á Ísafirði.
+13	-Eða skósveinn satans eins og hann heitir í símaskránni.
+14	En hvað um það.
+15	Eftir tvær vikur þarf allt að vera tipp topp, 
+16	er það skilið?
+17	Hvenær fórst þú að fylgjast með fótbolta?
+18	Hvernig á ég þá að komast inn á Ísafjörð?
+19	Þetta er fyrsti vinnudagurinn, 
+20	ég þekki þá ekkert.
+21	Jú, 
+22	ég get alveg spurt hann.
+23	Já.
+24	Bæ.
+25	Finni.
+26	-Já.
+27	Geturðu skutlað mér á Ísafjörð?
+28	-Nei, 
+29	það er yfirvinna í sundlauginni.
+30	Ætlar Rakel ekki að sækja þig?
+31	-Hún er að horfa á fótboltaleik.
+32	Vinnur þú í sundlauginni líka?
+33	-Ekki launað, 
+34	vinna í taninu.
+35	Er Rakel að skoða Spánverjann í markinu?
+36	Ég veit það ekki.
+37	Getur þú ekki reddað mér?
+38	Nei, sorrí.
+39	Sólin dofnar svo fljótt seinni partinn.
+40	Þú verður bara að húkka þér inn eftir.
+41	...hættulegt að veðja á kennitölur.
+42	-Ég er bara ósammála.
+43	Bíddu, 
+44	hvað er Rakel að gera hér?
+45	Ætli hún vilji ekki Tommapylsu í hádegismat.
+46	Góða skemmtun!
+47	Hæ, 
+48	hvað segir þú?
+49	-Fínt.
+50	Hvað ertu að gera hér?
+51	-Viltu koma með mér í hádeginu?
+52	Já, 
+53	við erum akkúrat að fara í mat.
+54	Tommi.
+55	-Já.
+56	Ég er búin að vera að hugsa um sambandið okkar.
+57	Já.
+58	-Hérna...
+59	Ég er að spá hvort við eigum ekki að taka pásu.
+60	Ha?
+61	Pásu?
+62	Bíddu, 
+63	hefur ekki allt verið í góðu?
+64	Jú, 
+65	það hefur bara margt breyst.
+66	Bíddu, 
+67	hvað hefur breyst?
+68	Varst þú ekki að draga mig vestur?
+69	Jú...
+70	Mér þykir ótrúlega vænt um þig og við náum ótrúlega vel saman.
+71	En...
+72	Ég er bara ekki nógu ástfangin af þér.
+73	Ertu ekki að grínast?
+74	Og hvað?
+75	Erum við þá að fara að búa saman en ekki vera saman?
+76	Helst ekki.
+77	Það er laust herbergi hjá Lindu og Halla hérna út í Vík.
+78	Lindu og Halla?
+79	Ertu bara að henda mér út núna?
+80	Ég er ekki að fara að búa hjá systur mömmu þinnar.
+81	Þú getur tjekkað á Kidda og Finna líka.
+82	Ég þekki þá ekkert.
+83	Kiddi er stórfurðulegur og Finni... 
+84	það er allavega eitthvað að honum.
+85	Já, hann er spes en hann er hress.
+86	Hvað á ég þá að gera við allt draslið mitt?
+87	Ég er með það í skottinu, 
+88	þú getur tekið það núna ef þú vilt.
+89	Þegar sviðasultan er komin á þá kemur aðal hnossgætið.
+90	Þetta kenndi Bjarni frændi mér.
+91	Hvað var að honum?
+92	En bara flokkstjóri í bæjarvinnunni eða eitthvað?
+93	Ekkert laust?
+94	Geturðu þá hringt ef eitthvað losnar?
+95	Bara tölvupóst?
+96	Já...
+97	Okei.
+98	Bless.
+99	Er hrífan með eitthvað vesen?
+100	Drullaðu þér í burtu!
+101	Ég er kominn með nóg af þér letinginn þinn!
+102	Gerir aldrei neitt hérna, 
+103	lætur mig gera allt!
+104	Kiddi...
+105	Sorrí með mig áðan.
+106	Ég bara missti mig alveg.
+107	Blessaður vertu, hafðu engar áhyggjur.
+108	Hvað segirðu...
+109	langar þig að tala um hvað gerðist?
+110	Já...
+111	Rakel var að hætta með mér.
+112	Sagðist vilja taka pásu.
+113	Ég veit alveg hvað það þýðir.
+114	Slut.
+115	Viltu bagg?
+116	Nei, ég er hættur.
+117	Og hvað?
+118	Sagði hún eitthvað af hverju?
+119	Nei, hún sagðist bara ekki vera viss með þetta.
+120	Ekki viss?
+121	Var hún ekki að draga þig vestur?
+122	Jú, nákvæmlega.
+123	Hvað er að henni?
+124	Hvað ætlarðu þá að gera?
+125	Fara bara beint aftur suður?
+126	Ég get það ekkert.
+127	Ég var að tala við Vinnumálastofnun, 
+128	það er ekkert laust svona seint.
+129	Ekki einu sinni í bæjarvinnunni.
+130	Hvað ætlarðu þá að gera?
+131	Bara vera hér?
+132	Ég verð að gera það.
+133	Ég bara trúi ekki að ég sé fastur á Bolungarvík.
+134	Í Bolungarvík!
+135	Þú býrð ekki á Reykjavík.
+136	Hvar ætlar þú að gista?
+137	-Ég veit það ekki.
+138	Rakel var búin að redda eitthverju hjá Lindu systur mömmu hennar... 
+139	það er ekki séns að ég gisti þar.
+140	Það kemur ekki til greina.
+141	Gæti ég fengið gistingu hjá ykkur?
+142	Þar til ég fæ vinnu fyrir sunnan.
+143	Góðan daginn.
+144	-Góðan daginn.
+145	Fórstu ekki í sturtu drengur?
+146	-Nei Tómas... ég baða mig ekki nakinn með öðrum nöktum karlmönnum.
+147	Gasalega verður þetta nú huggulegt.
+148	Það verður bara gaman hjá okkur í sumar.
+149	-Já, er það ekki?
+150	Ekkert vera að hlusta á mömmu ef hún er með vesen.
+151	Ef þú vilt elda egg og beikon á morgnana eftir fyllerí...
+152	þá bara gerir þú það.
+153	-Já, okei.
+154	Takk samt fyrir að redda mér.
+155	-Já minnsta málið.
+156	Ekkert pæla í Rakel.
+157	Hún er vön að slíta hjartað úr góðum drengjum.
+158	Þú ert ekki sá fyrsti karlinn minn.
+159	-Nú?
+160	Nei, hún er eins og minnkurinn, 
+161	veiðir sér bara til skemmtunnar.
+162	Miskunnarlaus skepna.
+163	Jájá...
+164	Hún var alltaf góð við mig.
+165	Minnkur er krúttlegur, en þú vilt ekki að hann sleppi inn í hænsnakofa.
+166	Hvað ertu að bulla?
+167	Þetta meikar ekkert sens.
+168	Þú munt ná þessu einn daginn.
+169	Nú er tíminn til að rífa sig úr skítnum, 
+170	fá sér gott tan og fara á gott fyllerí í kvöld.
+171	Já er það ekki bara?
+172	-Jú.
+173	Ég myndi líka kaupa mér nýjan bíl.
+174	Það læknar öll sár.
+175	-Jájá...
+176	Ég er að spá í að selja minn.
+177	-Á ég að kaupa hann?
+178	Þú ferð ekki að kaupa japanska sardínudós.
+179	Frekar amerískan dreka eða eitthvað þannig.

@@ -1,0 +1,46 @@
+0	The glaciers are a part of the powerful mother nature, they can be dangerous.
+1	Reasonable equipment and clothes should be a first priority before entering the glaciers.
+2	We strongly recommend that visitors contact local guides or tour operators for information before visiting the glaciers.
+3	About 10% of Iceland is covered by glaciers that contain the equivalent of twenty years of rainfall for the entire country.
+4	The main characteristic of glaciers is that they move.
+5	As a glacier glides forward at a rapid pace, its surface cracks.
+6	This happens because the top layers of ice (about 20-30 meters deep) are brittle, resulting in many deep cavities and fissures.
+7	At lower depths the ice is more solid.
+8	Changes in the atmosphere affect the glaciers expansion and movement.
+9	Iceland has many sub glacial volcanoes.
+10	The melting ice from an eruption can cause devastating floods.
+11	Approximately one third of Icelands excess water, which is returned to the sea, is glacial water.
+12	The glaciers are generally accessible barring restrictions due to current conditions.
+13	Langjökull is the countries second largest glacier.
+14	Its accessibility is as good as it gets, however no one should attempt driving up a glacier on their own.
+15	Many agencies offer tours where they take you up the glacier in specially equipped vehicles with experienced glacier guides.
+16	You can choose from jeep excursions, glacier hiking and snowmobiling.
+17	Gígjökull is a sliding glacier which moves north from Eyjafjallajökull.
+18	After the eruption in 2010 there is not much left of the glacier and no organized trips.
+19	It can however be admired from a distance on the way to Þórsmörk.
+20	Sólheimajökull is a part of Mýrdalsjökull.
+21	It´s very accessible and reachable by normal car.
+22	Right at the glaciers edge there is a parking lot.
+23	Hiking tours are available year round.
+24	The glacier is reasonably easy to cross and suitable for most people over the age of ten.
+25	Svínafellsjökull is part of Skaftafell national park, which is also the departure point.
+26	Trips are available year round and should suit people aged eight and up.
+27	Fjallsárjökull is part of Vatnajökull.
+28	Trips are available and the departure point is at Skaftafell national park.
+29	The bus drives to Fjallsárlón and from there you hike up to the glacier.
+30	Jökulsárlón is right by the main ring road (highway one)
+31	and there you will also find a service centre which is open year round.
+32	Boat tours on the lagoon are available from March to November.
+33	Fláajökull is one of the gliding glaciers which move south from Vatnajökull.
+34	It´s possible to walk up to Fláajökull from highway one.
+35	The Hike starts at Brunnhólsá and is about 6 km long.
+36	It is also possible to shorten the trip by driving up to Sandatún and walk from there.
+37	Heinabergsjökull is part of Vatnajökull.
+38	The Heinaberg area is located between Höfn in Hornafjörður and Skaftafell national park and is easily accessible by car.
+39	There is a parking lot by the glacier.
+40	Another part of Vatnajökull is Hofsfellsjökull and it is steadily decreasing in size.
+41	The depression left behind has filled with water and will, in time, turn into a lake.
+42	Hofsfellsjökull is close to Höfn and can be reached by four wheel drive jeeps.
+43	A glacier trek can be an unforgettable adventure but one should be mindful of the precautions to be taken while traversing this unfamiliar terrain.
+44	No one should attempt venturing upon a glacier without being accompanied by an experienced glacier guide.
+45	Several firms in the area provide glacier tours, more detailed information may be found on the internet, at tourist information centres and hotels.

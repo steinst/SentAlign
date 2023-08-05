@@ -1,0 +1,162 @@
+0	If they don't like it they'll go to Ísafjörður.
+1	That better not happen...
+2	No... that better not happen!
+3	-The guys from there are assholes.
+4	Maybe not assholes, 
+5	but they can be a bit difficult when they come here to play.
+6	-Difficult?
+7	They're all maggots.
+8	Þrándur certainly succeeded in spreading his evil among them.
+9	Þrándur?
+10	-An asshole.
+11	President of their golf club.
+12	-Or the spawn of the devil according to the phone book.
+13	Enough of that.
+14	In a fortnight the course will be tip–top.
+15	Is that clear?
+16	Since when do you follow soccer?
+17	How am I supposed to get back to Ísafjörður?
+18	It's the first day, I don't even know them.
+19	Yeah...
+20	I can ask him.
+21	Yes.
+22	Bye.
+23	Finni?
+24	-Yes.
+25	Can you drive me home?
+26	-No, I've got to work at the pool.
+27	Isn't Rakel picking you up?
+28	-She's watching a soccer match.
+29	Do you work at the pool too?
+30	-Not like that, work on my tan.
+31	Is Rakel checking out the new Spanish goalkeeper?
+32	I don't know.
+33	Can you help me out?
+34	Sorry, the sun fades so fast in the afternoon.
+35	You just have to hitchhike.
+36	...risky betting on age.
+37	-I just don't agree.
+38	What is Rakel doing here?
+39	She probably want's a Tommi Dog for lunch.
+40	Have fun!
+41	Hi, how are you?
+42	-Fine.
+43	What are you doing here?
+44	-Wanna join me for lunch?
+45	Sure, we just finished.
+46	Tommi.
+47	-Yes.
+48	I've been thinking about our relationship.
+49	Yes.
+50	-And...
+51	I'm think we should take a break.
+52	What?
+53	A break?
+54	I thought we were all good?
+55	Yes, but situations have changed.
+56	Changed?
+57	Didn't you just drag me to the Westfjords?
+58	Yes...
+59	I still care deeply for you and we're quite compatible.
+60	But...
+61	I've fallen out of love with you.
+62	Are you kidding me?
+63	So...
+64	Are we gonna live together, but not be together?
+65	No.
+66	Linda og Halli have a room here in Bolungarvík, if you want.
+67	Linda and Halli?
+68	Are you kicking me out right now?
+69	I'm not gonna live at your aunt's!
+70	You could ask Finni or Kiddi.
+71	I barely know them.
+72	Kiddi is a total weirdo and Finni... he definitely has brain damage.
+73	He's a bit different but he's jolly.
+74	So what do I do with all my stuff?
+75	It's all in the trunk, you can take it now if you want.
+76	Once the sheep brawn is on, we bring the magic.
+77	Courtesy of uncle Bjarni.
+78	What's his problem?
+79	What about just as a camp counselor?
+80	No openings?
+81	Can you call if anything opens up?
+82	Just e-mail?
+83	Yes...
+84	OK.
+85	Bye.
+86	Is the rake wreaking havoc?
+87	Piss off!
+88	I am so fed up with your lazy ass!
+89	You never do anything accept dump all the work on me!
+90	Kiddi...
+91	Sorry about earlier.
+92	I just lost it.
+93	Please...
+94	Don't worry about it.
+95	So...
+96	Do you wanna talk about it?
+97	Yeah...
+98	Rakel just broke up with me.
+99	Said she wants to take a break, but I know what that means.
+100	Slut.
+101	You want some?
+102	No, I quit.
+103	And what?
+104	Did she say why?
+105	No, just that she wasn't sure.
+106	Not sure?
+107	Didn't she drag you over here?
+108	Yeah, exactly.
+109	What's wrong with her?
+110	What are you going to do?
+111	Go back to Reykjavík?
+112	I can't...
+113	I just spoke to the job center, there is nothing available.
+114	Not even as a camp counselor.
+115	What are you going to do?
+116	Just stay here?
+117	I have to.
+118	I just can't believe I'm stuck at Bolungarvík.
+119	"In Bolungarvík"!
+120	You wouldn't say "At Reykjavík".
+121	Where are you gonna stay?
+122	-I have no idea.
+123	Rakel said her aunt had a spare room... there is no way I'm staying there.
+124	Not in a million years.
+125	Could I maybe crash at your place?
+126	Just until I get a job back south.
+127	Good morning.
+128	-Good morning.
+129	Dude, didn't you shower?
+130	-No, Tómas...
+131	I don't shower naked with other nude men.
+132	Man, this is gonna be sweet.
+133	Everything will be fine.
+134	-I guess so.
+135	And don't listen to mom if she's nagging.
+136	If you wanna fry eggs and bacon after a night out... go right ahead.
+137	-OK.
+138	Thanks for saving my ass.
+139	-Sure thing.
+140	Forget about Rakel.
+141	She's used to breaking the hearts of good men.
+142	You're not the first.
+143	-Yeah?
+144	She's like the mink, just hunts for fun.
+145	Vicious creature.
+146	Okay...
+147	She was always nice to me.
+148	The mink is also cute, but you don't want it in a chicken coop.
+149	What are you babbling about?
+150	It doesn't make any sense.
+151	You'll get it one day.
+152	Now it's time to wipe your ass, get a tan and get drunk tonight.
+153	I guess so.
+154	-You know it.
+155	I would also buy a new car.
+156	That heals all wounds.
+157	-Yeah?
+158	I might sell mine.
+159	-Should I buy it?
+160	No, you don't want a Japanese sardine can.
+161	You want American muscle.

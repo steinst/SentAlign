@@ -1,0 +1,73 @@
+0	- Sígarettur handa herra Raymond.
+1	- Farðu inn baka til.
+2	Láttu mig fá retturnar, strákur.
+3	Bíddu, bíddu, bíddu!
+4	Bíddu við.
+5	Hvað er þessi strákur að gera hér?
+6	Út með þig áður en ég rassskelli þig.
+7	Þú rassskellir engan.
+8	Hafðu ekki áhyggjur af honum.
+9	Hann sendist fyrir mig.
+10	Sama hver hann er eða hvað hann gerir.
+11	Krakkar eru óheillakrákur.
+12	Veðið er að renna út.
+13	Þegiðu nú og kastaðu teningnum.
+14	Þú tefur leikinn.
+15	Ég kasta andskotinn ekki.
+16	Krakkar eru óheillakrákur.
+17	Þoli þá ekki.
+18	Andskotastu nú héðan út áður en ég rassskelli þig.
+19	Þú flengir engan.
+20	Kastaðu teningnum, skögultennti asninn þinn.
+21	Allt í lagi, ég kasta.
+22	En eins gott að vera ekki óheppinn.
+23	Eina sem ég veit, ég má ekki tapa.
+24	Ég þarf að fá sexu.
+25	Barnið vantar skó og konuna ný föt.
+26	- Og þú þarft nýjar tennur.
+27	- Kastaðu djöfuls teningunum.
+28	Ég kasta andskotans teningunum.
+29	Ég sendi ykkur alla skítblanka heim.
+30	Nú þarf ég að fá sexu, fjandans sexu.
+31	Svona nú!
+32	Andskotinn sjálfur!
+33	Hvað er strákurinn að gera hér?
+34	Sagði ég ekki hann boðaði ólán?
+35	Hvað stendur á skiltinu?
+36	Nafnið mitt.
+37	Þetta er minn staður.
+38	Ég ræð hverjir koma hér inn.
+39	Þú tapaðir.
+40	Láttu næsta mann fá teningana eða kauptu þá.
+41	- Ég sel þá ekki.
+42	- Ég hef ekki ætlað mér að kaupa.
+43	Ég ætla að kasta aftur og þú kemur stráknum héðan út.
+44	Hver andskotinn gengur að þér?
+45	Heyrðu, þú kastaðir, þú tapaðir.
+46	Við hefðum borgað þér hefðir þú unnið, en þú tapaðir.
+47	Farðu nú heim og burstaðu tönnina.
+48	Finnst þér þetta fyndið?
+49	Ég sagði þér að ég þyldi ekki krakka í herberginu.
+50	- Óheillakrákur.
+51	Þú hlustaðir ekki.
+52	- Ég hlusta.
+53	Hlustaðu nú á þetta.
+54	Ég vil fá aftur allt sem ég tapaði í kvöld og ykkar hlut að auki.
+55	Skilurðu mig, tungulipri andskotinn þinn?
+56	Segðu gamla greppitrýninu að fara og sækja peningana.
+57	Segðu honum það eða ég sting þessum í endann á ykkur, og ég sting í þennan litla óheillakrákukanadjöful hérna.
+58	Þú verður að stinga okkur því þú færð ekkert hjá mér.
+59	Bíddu!
+60	Áður en þú gerir það vil ég bara segja þér eitt.
+61	Segja mér hvað, ræfillinn þinn?
+62	Hvern fjandann viltu segja mér?
+63	Hvað viltu segja mér?
+64	- Það datt úr mér.
+65	- Datt úr þér?
+66	Hver andskotinn!
+67	Fjandinn sjálfur.
+68	Krakkar hljóta að boða ólán fyrir hann í alvöru.
+69	Hann ætlaði að stinga, svo ég skaut.
+70	Bennie, Slim, Moses, viljið þið koma þessum dauða gaur héðan út?
+71	Spilið er búið í kvöld.
+72	Ég fer með strákinn til mömmu sinnar.

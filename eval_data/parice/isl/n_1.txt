@@ -1,0 +1,24 @@
+0	Norræna samstarfið er eitt umfangsmesta svæðissamstarf í heimi. 
+1	Samstarfið byggist á legu landanna, sameiginlegri sögu þeirra og menningu. 
+2	Að samstarfinu koma Danmörk, Finnland, Ísland, Noregur og Svíþjóð auk Álandseyja, Færeyja og Grænlands. 
+3	Norræna samstarfið er pólitískt, efnahagslegt og menningarlegt og lætur muna um sig í evrópsku og alþjóðlegu samstarfi. 
+4	Löndin stuðla sameiginlega að öflugum Norðurlöndum í öflugri Evrópu. 
+5	Með norrænu samstarfi er hagsmuna svæðisins gætt og norræn gildi efld í hnattrænu samhengi. 
+6	Sameiginleg gildi landanna styrkja stöðu Norðurlanda og skipa þeim meðal þeirra svæða í heiminum þar sem nýsköpun og samkeppnishæfni er mest. 
+7	Reglulegt þing er haldið a.m.k. einu sinni á ári. 
+8	Þingið ákveður stað og stund fyrir næsta þing. 
+9	Forsætisnefnd er heimilt að breyta þeirri ákvörðun ef sérstakar aðstæður koma upp. 
+10	Önnur þing eða þemaþing kemur saman ef forsætisnefnd ákveður slíkt‚ 
+11	eða ef a.m.k. tvær ríkisstjórnir eða tuttugu og fimm fulltrúar óska eftir því. 
+12	Forsætisnefnd ákveður þá stað og stund. 
+13	Þingið fer með æðsta ákvörðunarvald ráðsins. 
+14	Í Helsingforssamningnum er kveðið á um skipan þingsins‚ 
+15	og ennfremur að þingið geti samþykkt tilmæli, tekið aðrar ákvarðanir og gefið álit‚ sem beint er til ríkisstjórna‚ einnar eða fleiri‚ eða til ráðherranefndarinnar. 
+16	Forsætisnefnd fer með æðsta ákvörðunarvald ráðsins á milli þingfunda og hefur þá sömu heimildir og þingið hefur ella. 
+17	Nefndin stjórnar starfsemi ráðsins og sér um að samræma hana starfi þjóðþinga og alþjóðastofnana. 
+18	Starf ráðsins fer fram í fjórum nefndum: 
+19	Norrænu þekkingar- og menningarnefndinni, norrænu sjálfbærninefndinni, norrænu hagvaxtar- og þróunarnefndinni og norrænu velferðarnefndinni. 
+20	Nefndirnar undirbúa mál hver á sínu sviði áður en þau eru tekin til lokaafgreiðslu á þingi. 
+21	Eftirlitsnefnd fer með þingbundið eftirlit með þeirri starfsemi sem kostuð er sameiginlega úr norrænum sjóðum‚ og sér einnig um aðrar úttektir sem þingið ákveður. 
+22	Kjörnefnd undirbýr og leggur fram tillögur að kjöri sem fer fram á þinginu. 
+23	Helsingforssamningurinn kveður á um hvaða landsdeildir starfi og skipan þeirra. 

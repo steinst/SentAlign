@@ -1,0 +1,45 @@
+0	Closing the Loop for ALMA
+1	Three antennas working in unison open new bright year for revolutionary observatory
+2	The Atacama Large Millimeter/submillimeter Array (ALMA) has passed a key milestone crucial for the high quality images 
+3	that will be the trademark of this revolutionary new tool for astronomy.
+4	Astronomers and engineers have, 
+5	for the first time, 
+6	successfully linked three of the observatory's antennas at the 5000-metre elevation observing site in northern Chile.
+7	Having three antennas observing in unison paves the way for precise images of the cool Universe at unprecedented resolution, 
+8	by providing the missing link to correct errors that arise when only two antennas are used.
+9	On 20 November 2009 the third antenna for the ALMA observatory was successfully installed at the Array Operations Site, 
+10	the observatorys “high site” on the Chajnantor plateau, 
+11	at an altitude of 5000 metres in the Chilean Andes.
+12	Later, after a series of technical tests, 
+13	astronomers and engineers observed the first signals from an astronomical source making use of all three 12-metre diameter antennas linked together, 
+14	and are now working around the clock to establish the stability and readiness of the system.
+15	“The first signal using just two ALMA antennas, observed in October, can be compared to a babys first babblings,” 
+16	says Leonardo Testi, 
+17	the European Project Scientist for ALMA at ESO.
+18	“Observing with a third antenna represents the moment when the baby says its very first, meaningful word 
+19	- not yet a full sentence, but overwhelmingly exciting!
+20	The linking of three antennas is indeed the first actual step towards our goal of achieving precise and sharp images at submillimetre wavelengths.”
+21	The successful linking of the antenna trio was a key test of the full electronic and software system now being installed at ALMA, 
+22	and its success anticipates the future capabilities of the observatory.
+23	When complete, ALMA will have at least 66 high-tech antennas operating together as an “interferometer”, 
+24	working as a single, huge telescope probing the sky in the millimetre and submillimetre wavelengths of light.
+25	The combination of the signals received at the individual antennas is crucial 
+26	to achieve images of astronomical sources of unprecedented quality at its designed observing wavelengths.
+27	The three-antenna linkup is a critical step towards the observatorys operations as an interferometer.
+28	Although the first, successful measurements employing just two antennas were obtained at the ALMA high site from October 2009 (see ESO Announcement) 
+29	and demonstrated the excellent performance of the instruments, 
+30	the addition of the third antenna is a leap of vital importance into the future of the observatory.
+31	This major milestone for the project is known as “phase closure” and provides an important independent check on the quality of the interferometry.
+32	“The use of a network of three (or more) antennas in an interferometer dramatically enhances its performance over a simple pair of antennas,” 
+33	explains Wolfgang Wild, the European ALMA Project Manager.
+34	“This gives astronomers control over possible features which degrade the quality of the image, 
+35	arising due to the instrument or to atmospheric turbulence.
+36	By comparing the signals received simultaneously by the three individual antennas, these unwanted effects can be cancelled out 
+37	- this is completely impossible using only two antennas.”
+38	To achieve this crucial goal, astronomers observed the light coming from a distant extragalactic source, 
+39	the quasar QSO B1921-293, well known to astronomers for its bright emission at very long wavelengths, including the millimetre/submillimetre range probed by ALMA.
+40	The stability of the signal measured from this object shows that the antennas are working impressively well.
+41	Several additional antennas will be installed on the Chajnantor plateau over the next year and beyond, 
+42	allowing astronomers to start producing early scientific results with the ALMA system around 2011.
+43	After this, the interferometer will steadily grow to reach its full scientific potential, with at least 66 antennas.
+44	ALMA, an international astronomy facility, is a partnership of Europe, North America and East Asia in cooperation with the Republic of Chile.

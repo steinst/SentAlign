@@ -1,0 +1,38 @@
+0	Vettvangsnám: Heildræn þjónusta
+1	Forkrafa fyrir Vettvangsnám - heildræn þjónusta er Vettvangsnám - einstaklingsmiðuð þjónusta og námskeiðið Einstaklingsmiðuð þjónusta: starfshættir þroskaþjálfa. Um er að ræða heildstætt nám fræða og vettvangs.
+2	Nemendur taka virkan þátt í störfum þroskaþjálfa og fá faglega leiðsögn og fræðslu.
+3	Viðfangsefni og vinnulag: 
+4	Á þessu misseri fá nemar tækifæri til sérhæfingar innan starfssviðs þroskaþjálfa. 
+5	Um er að ræða störf með börnum og unglingum annars vegar og hins vegar störf með fullorðnum og öldruðum. 
+6	Í því samhengi fá þeir tækifæri til þess að dýpka starfstengda þekkingu á völdu sviði og tengja við fræðilegan og faglegan grunn sem og eigin starfskenningu. 
+7	Jafnframt er lögð áhersla á virka þátttöku í öllum þeim þáttum er felast í starfi þroskaþjálfa bæði heildrænt og á völdu sviði sérhæfingar. 
+8	Sérstök áhersla er á tengingu við nýjar mannréttindaáherslur í þjónustu. 
+9	Þannig er réttindagæsluhlutverk, ráðgjafar - og leiðsagnarhlutverk þroskaþjálfa skoðað. 
+10	Leiðbeinendur leggja fram leiðsagnaráætlun fyrir nemann sem unnin er í samstarfi við umsjónarmann námskeiðins og aðra leiðbeinendur á sama sérsviði. 
+11	Nemar fá tækifæri til að hafa áhrif á áherslur leiðsagnaráætlunarinnar í samræmi við áhuga, reynslu og þarfir.  
+12	Nemendur vinna starfstengd verkefni í samræmi við kröfur vettvangsnámsins. Um er að ræða verkefni er lúta að ábyrgð og skyldum þroskaþjálfa, faglegum forsendum og beinni þátttöku í starfi á völdu sviði. 
+13	Jafnframt því  fá nemendur aðstöðu til að vinna að  starfstengdum verkefnum í námskeiðinu Fagmennska og mannréttindi: Nýjar áherslur í þjónustu. 
+14	Vettvangsnámið skipast á tvær 4 vikna lotur. 
+15	Vikuhlé er á milli lotna og sækja nemendur þá námslotu í skólann. 
+16	Um er að ræða viðveru á vettvangi er miðast við 6 kennslustundir á dag. 
+17	Verkefnavinna er þar fyrir utan. 
+18	Markmið:
+19	Í lok námskeiðs skulu nemendur hafa:
+20	Þekking
+21	Dýpkað þekkingu á fræðilegum og faglegum forsendum á völdu sviði.
+22	Öðlast dýpri skilning og sýn á ábyrgð, starfsskyldur, helstu áskoranir og starfsþróun þroskaþjálfa í starfi nú og í náinni framtíð með sérstakri áherslu á valið svið.
+23	Öðlast dýpri sýn og skilning á fræðilegar og faglegar forsendur eigin starfskenningar og starfsþróunar.
+24	Leikni
+25	Geti beitt kerfisbundnum og gagnrýnum aðferðum við greiningu viðfangsefna.
+26	Geti rökstutt ákvarðanir á fræðilegum og faglegum grunni.
+27	Geti lagt sjálfstætt mat á þær ákvarðanir og aðferðir sem nýttar eru.
+28	Greini hvenær þörf er á frekari upplýsingum og hafi færni til að finna þær, meta áreiðanleika þeirra og nýta á viðeigandi hátt.
+29	Hafi tileinkað sér virðingu og auðmýkt gagnvart  eigin fagmennsku og þýðingu sannreyndrar þekkingar.
+30	Hæfni
+31	Sýni fram á hæfni til að tengja traustar fræðilegar og hugmyndafræðilegar forsendur við viðfangsefni vettvangsnámsins.
+32	Sýni fram á hæfni til virkrar og ábyrgrar þátttöku í  þeim þáttum er felast í starfi þroskaþjálfa á völdu sérsviði.
+33	Sýni fram á hæfni við að styðja viðfangsefni og ákvarðanir í starfi fræðilegum og faglegum rökum í ræðu og riti.
+34	Sýni fram á hæfni til að leiða umræður um álitamál og áskoranir í vettvangsnáminu.
+35	Sýnir fram á hæfni til að taka leiðsögn og handleiðslu og nýta til aukins árangurs í vettvangsnáminu.
+36	Sýni fram á hæfni til árangursríkra samskipta og leiðtoga hugsunar.
+37	Sýni fram á hæfni til fræðilegrar og starfstengdrar ígrundunar og til starfsþróunar.

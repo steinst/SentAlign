@@ -1,0 +1,104 @@
+0	Arven er dauðvona.
+1	Hún lifir ekki lengi illskuna sem breiðist nú út frá Mordor.
+2	Ljós Aftanstjörnunnar dvín.
+3	Eftir því sem Sauron styrkist fer þrek hennar þverrandi.
+4	Líf Arvenar er nú bundið örlögum Hringsins.
+5	Skugginn vofir yfir okkur, Aragorn.
+6	Endalokin nálgast.
+7	Það eru ekki endalok okkar heldur hans.
+8	Þú ríður til stríðs en ekki sigurs.
+9	Herir Saurons sækja að Mínas Tíríð, þú veist það.
+10	En á laun sendir hann annan flokk sem gerir árás frá Fljótinu.
+11	Floti ræningjanna frá Umbrum siglir úr suðri.
+12	Þeir koma til borgarinnar eftir tvo daga.
+13	Þú ert ofurliði borinn, Aragorn.
+14	Þú þarft fleiri menn.
+15	Það eru engir.
+16	Það eru þeir sem dvelja í fjallinu.
+17	Morðingjar.
+18	Svikarar.
+19	Viltu að ég kalli þá til orrustu?
+20	Þeir trúa á ekkert.
+21	Þeir svara engum.
+22	Þeir munu svara konungi Gondor.
+23	Andúríll, Logi Vestursins, smíðaður úr brotum Narsíls.
+24	Sauron mun ekki hafa gleymt sverði Elendils.
+25	Hjörinn sem var brotinn mun snúa aftur til Mínas Tíríðs.
+26	Sá Maður sem veldur mætti þessa sverðs getur kallað til sín her sem er banvænni en nokkur á jarðríki.
+27	Settu Rekkann til hliðar.
+28	Vertu sá sem þú fæddist til að verða.
+29	Farðu Dimmholtsveg.
+30	Ég færi Mönnum von.
+31	Ég á mér enga sjálfur.
+32	Hví gerirðu þetta?
+33	Stríðið er í Austri.
+34	Þú getur ekki farið kvöldið fyrir orrustuna.
+35	Þú getur ekki yfirgefið mennina.
+36	Jóvin...
+37	- Við þörfnumst þín hér.
+38	Hví komstu?
+39	Veistu það ekki?
+40	Í mér elskar þú aðeins skuggann og ímyndina.
+41	Ég get ekki veitt þér það sem þú sækist eftir.
+42	Ég hef óskað þér sælu frá því ég leit þig fyrst augum.
+43	Hvert þykist þú vera að fara?
+44	Ekki núna.
+45	Í þetta sinn verður þú eftir, Gimli.
+46	Hefurðu ekki lært neitt um þrjósku Dverga?
+47	Sættu þig við það.
+48	Við förum með þér, drengur.
+49	Hvað er að gerast?
+50	Hvert er hann að fara?
+51	Ég skil ekki.
+52	Aragorn!
+53	Hví fer hann rétt fyrir orrustu?
+54	Hann fer því það er engin von.
+55	Hann fer því hann er tilneyddur.
+56	Of fáir hafa komið.
+57	Við getum ekki sigrað heri Mordors.
+58	Nei.
+59	Það getum við ekki.
+60	En við munum engu að síður mæta þeim í orrustu.
+61	Ég hef gefið fyrirmæli.
+62	Þjóðin á að lúta stjórn þinni í minn stað.
+63	Taktu sæti mitt í Gullinþekju.
+64	Megir þú verja Edóras lengi ef illa fer í orrustunni.
+65	Hvaða öðrum skyldum viljið þér að ég gegni, herra minn?
+66	Skyldum?
+67	Nei.
+68	Það vildi ég að þú brostir á ný en syrgðir ekki þá sem tíminn hefur vitjað.
+69	Þú munt lifa það að sjá þá daga koma á ný.
+70	Og ekki meiri örvæntingu.
+71	Hvers konar her hefst við á svona stað?
+72	Fordæmdur her.
+73	Endur fyrir löngu sóru Fjallbúar síðasta konungi Gondor eið um að koma honum til hjálpar og berjast.
+74	En þegar kallið kom, þegar þörf Gondors var brýn, flúðu þeir og hurfu inn í myrkur fjallanna.
+75	Ísildur lagði þá bölvun á þá um að þeir fengju aldrei hvíld fyrr en eiðurinn væri uppfylltur.
+76	Hver mun kalla úr húmskugga gráum hinn gleymda lýð?
+77	Arftaki Þess er eiða Þeir sóru.
+78	Úr norðri hann kemur og nauður hann rekur...
+79	Að brjótast um dyrnar að Dauðsmannsslóð.
+80	Blóðið storknar í æðum mér.
+81	Leiðin er lokuð.
+82	Hinir Dauðu gerðu hana.
+83	Og hinir Dauðu halda henni.
+84	Leiðin er lokuð.
+85	Breki!
+86	Ég óttast ekki dauða.
+87	Þetta er fáheyrt.
+88	Fer Álfur í iður jarðar, þangað sem Dvergur hættir sér ei?
+89	Skömmin myndi fylgja mér um aldur og ævi.
+90	Við verðum að ríða hratt og léttbúnir.
+91	Leiðin framundan er löng og maður og dýr verða að komast á leiðarenda með nægan þrótt til að berjast.
+92	Litlir Hobbitar eiga ekki heima í stríði, meistari Káradúkur.
+93	Allir vinir mínir hafa haldið til orrustu.
+94	Mér þætti skömm að því að vera skilinn eftir.
+95	Það er þriggja daga sprettur til Mínas Tíríðs og enginn riddara minna getur íþyngt sér með þér.
+96	Ég vil berjast.
+97	Ég hef ekki fleiri orð um þetta.
+98	Ríddu með mér.
+99	Frú mín góð?
+100	Fylkið liði!
+101	Haldið af stað!
+102	Ríðið!
+103	Ríðið til Gondors!

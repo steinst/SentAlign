@@ -1,0 +1,39 @@
+0	Jöklar landsins eru hluti af hinni kraftmiklu Móður náttúru og þeir geta verið hættulegir.
+1	Viðeigandi búnaður og fatnaður skal ávallt hafa forgang í skipulagningu ferða á jökla landsins.
+2	Við mælum eindregið með að ferðamenn hafa samband við ferðaskipuleggjendur og leiðsögumenn á svæðunum áður en lagt er af stað upp á jökul.
+3	Jökulís þekur um 10% af flatarmáli Íslands og rúma jöklar landsins vatn sem jafngildir um það bil 20 ára úrkomu á landið allt.
+4	Eitt megineinkenni jökla er að þeir hreyfast.
+5	Við skrið jökla, springur yfirborð þeirra ef ísrennslið er hratt.
+6	Þetta gerist vegna þess að efstu 20-30 metrar íssins brotna auðveldlega, en hann er þjálli á miklu dýpi.
+7	Þess vegna einkenna mikil sprungusvæði marga skriðjökla, en sprungurnar geta orðið allt að 30 metra djúpar.
+8	Breytilegt loftslag hefur áhrif á útbreiðslu og hreyfingu jöklanna.
+9	Í jöklunum eru margar virkar eldstöðvar, en eldgos og jarðhiti bræða ís og geta valdið jökulhlaupi.
+10	Um þriðjungur þess vatns sem fellur til sjávar af Íslandi, er jökulvatn.
+11	Aðgengi að íslenskum jöklum er nokkuð mismunandi, en þó er mögulegt að heimsækja flesta þeirra.
+12	Langjökull er næststærsti jökull landsins.
+13	Aðgengi að jöklinum er með því besta sem gerist, en þó ætti enginn að reyna að aka upp á jökul á eigin vegum.
+14	Ferðaþjónustufyrirtæki bjóða upp á ferðir þar sem ekið er upp á jökulinn á sérútbúnum bílum og reyndir jöklaleiðsögumenn eru alltaf með í för.
+15	Í boði eru ökuferðir, gönguferðir og snjósleðaferðir.
+16	Gígjökull er skriðjökull sem gengur norður úr Eyjafjallajökli.
+17	Eftir gosið 2010 er lítið eftir af jöklinum og engar skipulagðar ferðir þangað.
+18	Þó er hægt að virða jökulinn fyrir sér úr fjarlægð á leiðinni inn í Þórsmörk.
+19	Sólheimajökull tilheyrir Mýrdalsjökli.
+20	Hann er mjög aðgengilegur og mögulegt að aka venjulegum fólksbílum alla leið að honum, en þar er bílastæði.
+21	Boðið er upp á gönguferðir allt árið um kring.
+22	Jökullinn er tiltölulega auðveldur yfirferðar og ættu ferðirnar að henta flestum frá 10 ára aldri, með viðeigandi búnað meðferðis.
+23	Svínafellsjökull tilheyrir þjóðgarðinum í Skaftafelli, en þaðan er farið upp á jökulinn, ferðir eru í boði allan ársins hring og henta fólki frá 8 ára aldri.
+24	Fjallsárjökull er hluti af Vatnajökli.
+25	Í boði eru ferðir þar sem ekið frá Skaftafelli og upp að Fjallsárlóni og þaðan er gengið á jökulinn.
+26	Jökulsárlón er rétt við þjóðveg 1 og þar er þjónustumiðstöð sem er opin allt árið.
+27	Boðið er upp á siglingar um lónið frá mars og fram í nóvember.
+28	Fláajökull er einn skriðjöklanna sem ganga suður úr Vatnajökli.
+29	Hægt er að ganga inn að Fláajökli frá þjóðvegi 1.
+30	Gönguleiðin hefst við Brunnhólsá og er um 6 km.
+31	Einnig er hægt að aka inn að Sandatúnum og stytta þannig leiðina.
+32	Heinabergsjökull er hluti af Vatnajökli.
+33	Heinabergssvæðið sem staðsett er milli Hafnar og Skaftafells, er vel aðgengilegt fólksbílum, en það er bílastæði við jökulinn.
+34	Hoffellsjökull er enn einn jökull sem tilheyrir Vatnajökli og hann fer ört hopandi.
+35	Í dældinni sem jökullinn hefur skilið eftir sig hefur myndast lón, sem mun með tímanum breytast í stöðuvatn.
+36	Hoffellsjökull er skammt frá Höfn í Hornafirði og það er hægt að aka að rótum hans á fjórhjóladrifnum jeppum.
+37	Ferð upp á jökul getur verið ógleymanlegt ævintýri, en þó ber að hafa í huga að þeir geta verið stórhættulegir og því nauðsynlegt að vera í fylgd reyndra jöklaleiðsögumanna.
+38	Nokkur fyrirtæki sjá um skipulagðar jöklaferðir á Suðurlandi, en hægt er að nálgast upplýsingar um þær á netinu, í upplýsingamiðstöðvum ferðamála eða hjá starfsmönnum hótela.

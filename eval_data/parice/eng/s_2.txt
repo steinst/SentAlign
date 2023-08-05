@@ -1,0 +1,74 @@
+0	- I got Mr Raymond's cigarettes.
+1	- Go on in the back.
+2	Kid, give me my cigarettes.
+3	Wait, wait, wait!
+4	Hold it.
+5	What's this kid doing here?
+6	Get out before I kick your little ass.
+7	You ain't kicking shit.
+8	Don't worry about him.
+9	He runs errands for me.
+10	I don't care who he is or what he does.
+11	Kids bring me bad luck.
+12	The bet is fading.
+13	Stop talking and shoot the dice.
+14	You're fucking up the game.
+15	I ain't shooting shit.
+16	I told you kids bring me bad luck.
+17	I can't stand them.
+18	Now, get the fuck out of here before I kick your ass.
+19	You ain't whupping shit.
+20	Shoot the dice, you snaggle-toothed motherfucker.
+21	All right, I'm going to shoot.
+22	But I'd better not crap.
+23	That's all I know, I'd better not crap.
+24	Come on, 6. I've been waiting all night.
+25	Baby needs shoes, new clothes.
+26	- And you need some teeth.
+27	- Shoot the goddamn dice, man!
+28	I'm going to shoot the damn dice.
+29	I'll send every one of you home broke.
+30	Come on, 6, with your bad ass.
+31	Come on!
+32	Craps!
+33	What are you doing with this kid in here?
+34	Didn't I say they're bad luck?
+35	What's that sign say?
+36	'Ray's Place'.
+37	That's me.
+38	This is my place.
+39	I have in here whoever I want.
+40	You lost.
+41	So pass the dice, or buy them from this motherfucker.
+42	- And I ain't selling.
+43	- I ain't buying.
+44	I'm going to shoot this again and you're going to get this kid out of here.
+45	What the fuck is wrong with you?
+46	Man, look, you shot, you lost.
+47	We'd have paid you if you won, but you lost.
+48	Now, go home and brush that tooth.
+49	You think that's funny?
+50	I told you I couldn't stand kids in the room.
+51	- They're bad luck.
+52	You wouldn't listen.
+53	- l'm listening.
+54	Listen to this.
+55	I want back all the money I lost tonight plus what you took in.
+56	Do you understand me, you smooth-talking son of a bitch?
+57	Tell that old frog-faced dude to go out there and bring back the money.
+58	Tell him, or I'll stick your ass, and I'm going to stick him, and I'll stick this little Yankee ass, bad-luck motherfucker standing here.
+59	Then you'll have to stick us because I ain't giving you shit.
+60	Wait!
+61	Before you do, I just want to tell you one thing.
+62	Tell me what, punk?
+63	What the fuck do you want to tell me?
+64	What do you want to tell me?
+65	- It slips my mind.
+66	- Slips your mind?
+67	Holy shit!
+68	Goddamn.
+69	I guess he does have bad luck with kids.
+70	He was going to stab us, so I shot him.
+71	Bennie, Slim, Moses, would you help get this dead motherfucker out, please?
+72	The game's over for tonight.
+73	I'm taking this boy home to his mother.

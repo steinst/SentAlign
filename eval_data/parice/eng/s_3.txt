@@ -1,0 +1,112 @@
+0	Arwen is dying.
+1	She will not long survive the evil that now spreads from Mordor.
+2	The light of the Evenstar is failing.
+3	As Sauron's power grows, 
+4	her strength wanes.
+5	Arwen's life is now tied to the fate of the Ring.
+6	The Shadow is upon us, Aragorn.
+7	The end has come.
+8	It will not be our end, but his.
+9	You ride to war, 
+10	but not to victory.
+11	Sauron's armies march on Minas Tirith, this you know.
+12	But in secret he sends another force which will attack from the river.
+13	A fleet of Corsair ships sails from the south.
+14	They'll be in the city in two days.
+15	You're outnumbered, Aragorn.
+16	You need more men.
+17	There are none.
+18	There are those who dwell in the mountain.
+19	Murderers traitors.
+20	You would call upon them to fight?
+21	They believe in nothing.
+22	They answer to no one.
+23	They will answer to the king of Gondor.
+24	Andûril, the Flame of the West, 
+25	forged from the shards of Narsil.
+26	Sauron will not have forgotten the Sword of Elendil.
+27	The blade that was broken shall return to Minas Tirith.
+28	The man who can wield the power of this sword can summon to him an army more deadly than any that walks this earth.
+29	Put aside the Ranger.
+30	Become who you were born to be.
+31	Take the Dimholt road.
+32	I give hope to Men.
+33	I keep none for myself.
+34	Why are you doing this?
+35	The war lies to the east.
+36	You cannot leave on the eve of battle.
+37	You cannot abandon the men.
+38	Éowyn....
+39	We need you here.
+40	Why have you come?
+41	Do you not know?
+42	It is but a shadow and a thought that you love.
+43	I cannot give you what you seek.
+44	I have wished you joy since first I saw you.
+45	Just where do you think you're off to?
+46	Not this time.
+47	This time you must stay, Gimli.
+48	Have you learned nothing of the stubbornness of Dwarves?
+49	You might as well accept it.
+50	We're going with you, laddie.
+51	-What's happening?
+52	-Where is he going?
+53	Where's he going?
+54	I don't understand.
+55	Lord Aragorn!
+56	Why does he leave on the eve of battle?
+57	He leaves because there is no hope.
+58	He leaves because he must.
+59	Too few have come.
+60	We cannot defeat the armies of Mordor.
+61	No we cannot.
+62	But we will meet them in battle nonetheless.
+63	I have left instruction.
+64	The people are to follow your rule in my stead.
+65	Take up my seat in the Golden Hall.
+66	Long may you defend Edoras if the battle goes ill.
+67	What other duty would you have me do, my lord?
+68	Duty?
+69	No.
+70	I would have you smile again not grieve for those whose time has come.
+71	You shall live to see these days renewed and no more despair.
+72	What kind of army would linger in such a place?
+73	One that is cursed.
+74	Long ago, the Men of the Mountains swore an oath to the last king of Gondor to come to his aid to fight.
+75	But when the time came when Gondor's need was dire they fled vanishing into the darkness of the mountain.
+76	And so Isildur cursed them never to rest until they had fulfilled their pledge.
+77	Who shall call them from the grey twilight?
+78	The forgotten people.
+79	The heir of him to whom the oath they swore.
+80	From the north shall he come.
+81	Need shall drive him.
+82	He shall pass the door to the Paths of the Dead.
+83	The very warmth of my blood seems stolen away.
+84	The way is shut.
+85	It was made by those who are dead.
+86	And the Dead keep it.
+87	The way is shut.
+88	Brego!
+89	I do not fear death.
+90	Well, this is a thing unheard-of.
+91	An Elf will go underground where a Dwarf dare not?
+92	Oh.
+93	Oh, I'd never hear the end of it.
+94	We must ride light and swift.
+95	It is a long road ahead.
+96	And man and beast must reach the end with the strength to fight.
+97	Little Hobbits do not belong in war, Master Meriadoc.
+98	All my friends have gone to battle.
+99	I would be ashamed to be left behind.
+100	It is a three-day gallop to Minas Tirith.
+101	And none of my riders can bear you as a burden.
+102	I want to fight.
+103	I will say no more.
+104	Ride with me.
+105	My lady.
+106	Form up!
+107	Move out!
+108	Form up!
+109	Move out!
+110	Ride!
+111	Ride now to Gondor!
