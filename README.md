@@ -29,8 +29,11 @@ To run the alignment you first need to activate the environment:
 ```
 conda activate SentAlign
 ```
+
 Start by creating a list of files to align:
-python3 files2align.py -dir /path/to/files/to/align
+
+
+python3 files2align.py -dir /path/to/files/to/align --source-language eng
 
 Then you run the alignments. Aligning English and Icelandic files:
 

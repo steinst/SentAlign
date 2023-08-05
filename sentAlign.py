@@ -36,7 +36,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--corpus-folder', '-dir')
 parser.add_argument('--source-language', '-sl', default='eng')
 parser.add_argument('--target-language', '-tl', default='isl')
-parser.add_argument('--filename', '-f', help='Name of source and target file(s) to be aligned', type=str, nargs='+', required=True)
+parser.add_argument('--filename', '-f', help='Name of source and target file(s) to be aligned', type=str, nargs='+')
 #parser.add_argument('--temporary-folder', '-tmp', default='tmp2')
 parser.add_argument('--output-folder', '-out', default='output')
 #Aligner settings
