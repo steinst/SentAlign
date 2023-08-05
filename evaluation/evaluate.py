@@ -111,7 +111,7 @@ def score_multiple(gold_list, test_list, keep_nulls, value_for_div_by_0=0.0):
     tp_fp = 0
     tp_fn = 0
     # rcounts = np.array([0, 0, 0, 0], dtype=np.int32)
-    print(len(test_list[0]))
+    #print(len(test_list[0]))
     for goldalign, testalign in zip(gold_list, test_list):
         if keep_nulls:
             testalign = [(x, y) for x, y in testalign if len(x) and len(y)]
@@ -132,9 +132,9 @@ def score_multiple(gold_list, test_list, keep_nulls, value_for_div_by_0=0.0):
     # pcounts: tpstrict,fnstrict,tplax,fnlax
     # rcounts: tpstrict,fpstrict,tplax,fplax
 
-    print(counts)
-    print(tp_fp)
-    print(tp_fn)
+    # print(counts)
+    #print(tp_fp)
+    #print(tp_fn)
     if counts[0] + counts[1] == 0:
         pstrict = value_for_div_by_0
     else:
@@ -199,7 +199,7 @@ def main():
                         help='use null alignments')
 
     args = parser.parse_args()
-    print(args.nulls)
+    #print(args.nulls)
 
     if len(args.test) != len(args.gold):
         raise Exception('number of gold/test files must be the same')
