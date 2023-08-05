@@ -2,7 +2,7 @@
 
 import argparse
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, exists
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--corpus-folder', '-dir')
@@ -13,7 +13,7 @@ args = parser.parse_args()
 corpus_folder = args.corpus_folder
 output_folder = args.corpus_folder + '/' + args.output_folder
 source_language_folder = corpus_folder + '/' + args.source_language
-if os.path.exists(output_folder):
+if exists(output_folder):
     mkdir(output_folder)
 
 files_to_process = [f for f in listdir(source_language_folder) if isfile(join(source_language_folder, f))]
