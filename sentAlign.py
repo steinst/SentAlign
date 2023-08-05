@@ -94,7 +94,7 @@ def print_progress(infoclass):
     infoclass.update_times()
     print('{0: <26}'.format(infoclass.file_processing_stage) + '{0: <25}'.format(infoclass.input_file) + '{0: <18}'.format(str(infoclass.source_file_length) + ":" + str(infoclass.target_file_length)), '{0: <18}'.format("Files left: " + str(infoclass.files_left)),
           " Path node {}/{}".format(str(infoclass.current_path_knot), str(infoclass.total_path_knots)),
-          (" {}/{}".format(str(datetime.datetime.now() - infoclass.file_start_time), infoclass.align_estimated_time)), end='\r')
+          (" {}/{}".format(str(datetime.datetime.now() - infoclass.file_start_time))), end='\r') #, infoclass.align_estimated_time)), end='\r')
 
 def load_labse_model(proc_device, labse_model):
     tokenizer = BertTokenizerFast.from_pretrained(labse_model)
@@ -549,12 +549,6 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
 
 def greedy_procedure(file_name, anchor_list, file_minimum_anchor_score, anchor_score_subtraction, temp_cutoff4anchoring, cutoffpenalty):
     anchor_source_list, anchor_target_list, anchor_source_list_lines, anchor_target_list_lines, anchor_src_emb_dict, anchor_trg_emb_dict = create_anchor_files(file_name, 1, True)
-    processInfo.set_status('Greedy Anchoring')
-    print('anchor_source_list:')
-    print(anchor_source_list)
-    print('anchor_target_list:')
-    print(anchor_target_list)
-    print('hmmm')
     # this will not work if we have overlaps (other than 1)
     labse_score_matrix = np.asarray(create_labse_score_matrix(anchor_source_list, anchor_target_list, anchor_src_emb_dict, anchor_trg_emb_dict))
     #print('labse_score_matrix.shape', labse_score_matrix.shape)
@@ -900,7 +894,7 @@ def process_file(filename, minimum_labse_anchor):
         processInfo.set_status("Aligning...")
         start_align = time.process_time()
 
-        print("matrix_anchors", matrix_anchors)
+        #print("matrix_anchors", matrix_anchors)
 
         total_path = align_anchors_multi(matrix_anchors, source_dict, target_dict, src_emb_dict, trg_emb_dict, args.num_proc, score_cutoff,
                                          max_concats, processInfo, minimum_length_words, maximum_length_words, start_penalty_word_number,

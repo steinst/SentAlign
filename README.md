@@ -16,6 +16,16 @@ conda env create -f environment.yml
 ```
 
 ### Running the alignment
+We assume that the files to align have the same names in the source and target language, but are kept in folders named after the language. For example, if we want to align the files in the folder `/path/to/files/to/align` we would have the following structure:
+```
+/path/to/files/to/align/eng/file1.txt
+/path/to/files/to/align/eng/file2.txt
+...
+/path/to/files/to/align/isl/file1.txt
+/path/to/files/to/align/isl/file2.txt
+```
+
+To run the alignment you first need to activate the environment:
 ```
 conda activate SentAlign
 ```
