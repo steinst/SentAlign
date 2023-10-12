@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 import argparse
-from os import listdir
-from os.path import isfile, join, exists, mkdir
+from os import listdir, mkdir
+from os.path import isfile, join, exists
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--corpus-folder', '-dir')
