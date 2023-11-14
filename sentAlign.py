@@ -956,3 +956,4 @@ if __name__ == '__main__':
         pass
 
     print('Aligned ' + str(len(list(files2align.keys())))) + ' files in ' + str(datetime.datetime.now() - processInfo.start_time) + ' seconds.'
+
