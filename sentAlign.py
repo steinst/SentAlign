@@ -956,5 +956,6 @@ if __name__ == '__main__':
     except:
         pass
 
-    print('Aligned ' + str(len(list(files2align.keys()))) + ' files in ' + str(datetime.datetime.now() - main_starttime) + ' seconds.', flush=True)
+    print('\r', end='', flush=True)
+    print('Aligned ' + str(len(list(files2align.keys()))) + ' files in ' + str(datetime.datetime.now() - main_starttime) + ' seconds.')
 
