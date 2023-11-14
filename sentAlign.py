@@ -909,6 +909,7 @@ def get_filesleft(alignlist):
 
 # Create overlaps
 if __name__ == '__main__':
+    main_starttime = datetime.datetime.now()
     tokenizer, model = load_labse_model(args.proc_device, 'setu4993/LaBSE')
     files2align = {}
     filesdone = {}
@@ -955,5 +956,5 @@ if __name__ == '__main__':
     except:
         pass
 
-    print('Aligned ' + str(len(list(files2align.keys()))) + ' files.', end='\r') # in ' + str(datetime.datetime.now() - processInfo.start_time) + ' seconds.')
+    print('Aligned ' + str(len(list(files2align.keys()))) + ' files in ' + str(datetime.datetime.now() - main_starttime) + ' seconds.', flush=True)
 
