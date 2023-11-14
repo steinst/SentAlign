@@ -4,6 +4,9 @@ import argparse
 from os import listdir, mkdir
 from os.path import isfile, join, exists
 
+# This script generates a list of files to align and a list of files already aligned.
+# The lists consist of all files in the source language folder inside the corpus folder.
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--corpus-folder', '-dir')
 parser.add_argument('--source-language', '-sl', default='eng')
@@ -27,3 +30,7 @@ with open(corpus_folder + '/files2align.txt', 'w') as f:
 with open(corpus_folder + '/filesdone.txt', 'w') as f:
     for file in files_not_to_process:
         f.write(file + '\n')
+
+print('files2align.txt and filesdone.txt created in ' + corpus_folder + '/')
+print('Files to align: ' + str(len(files_to_process)))
+print('Files already aligned: ' + str(len(files_not_to_process)))

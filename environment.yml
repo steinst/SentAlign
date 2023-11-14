@@ -7,3 +7,4 @@ dependencies:
   - transformers=4.22.2
   - numpy=1.22.1
   - cython=0.29.27
+  - pytorch-gpu=1.13.0
