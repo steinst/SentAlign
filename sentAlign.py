@@ -955,5 +955,5 @@ if __name__ == '__main__':
     except:
         pass
 
-    print('Aligned ' + str(len(list(files2align.keys())))) + ' files in ' + str(datetime.datetime.now() - processInfo.start_time) + ' seconds.'
+    print('Aligned ' + str(len(list(files2align.keys()))) + ' files in ' + str(datetime.datetime.now() - processInfo.start_time) + ' seconds.')
 
