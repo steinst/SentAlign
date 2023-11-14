@@ -17,7 +17,6 @@ import string
 import random
 import time
 import pyximport
-#import psutil
 
 pyximport.install(setup_args={'include_dirs':np.get_include()}, inplace=True, reload_support=True)
 from galechurch import gale_church
@@ -40,7 +39,6 @@ parser.add_argument('--filename', '-f', help='Name of source and target file(s) 
 #parser.add_argument('--temporary-folder', '-tmp', default='tmp2')
 parser.add_argument('--output-folder', '-out', default='output')
 #Aligner settings
-#parser.add_argument('-n', '--num_overlaps', type=int, default=4, help='Maximum number of allowed overlaps.') #sama og að neðan
 parser.add_argument('--max-concatenations', '-concats', type=int, help='Maximum number of concatenated sentences per language', default=4)
 parser.add_argument('--free-concatenations', '-freejoins', type=int, help='Maximum number of concatenations before penalty is applied', default=2)
 parser.add_argument('--score-cutoff', '-cutoff', type=float, help='Minimum similarity score for a sentence pair to be considered', default=0.4)
@@ -94,8 +92,6 @@ def print_progress(infoclass):
     infoclass.update_times()
     print('{0: <26}'.format(infoclass.file_processing_stage) + '{0: <25}'.format(infoclass.input_file) + '{0: <18}'.format(str(infoclass.source_file_length) + ":" + str(infoclass.target_file_length)), '{0: <18}'.format("Files left: " + str(infoclass.files_left)),
           end='\r')
-            #" Path node {}/{}".format(str(infoclass.current_path_knot), str(infoclass.total_path_knots)),
-          #(" {}/{}".format(str(datetime.datetime.now() - infoclass.file_start_time))), end='\r') #, infoclass.align_estimated_time)), end='\r')
 
 def load_labse_model(proc_device, labse_model):
     print("Loading LaBSE model...", end='\r')
@@ -492,8 +488,6 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
         new_anchor_list = []
         maxNumberOfKnots = 0
         for anchor in anchor_list:
-            #print(anchor)
-            #print(start_source, start_target)
             try:
                 end_source = int(anchor[0].split(',')[0])
             except:
@@ -502,9 +496,6 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
                 end_target = int(anchor[1].split(',')[0])
             except:
                 end_target = anchor[1]
-
-            #Þarf að búa til matrixu fyrir hvert bil og láta svo greedy selection velja rétt innan úr því
-            #þegar matrixan er notuð þarf að vita hver 0-punkturinn er,s vo hægt að leggja saman, bæði fyrir source og target
 
             current_source_length = end_source - start_source
             current_target_length = end_target - start_target
@@ -524,7 +515,6 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
             if numberOfKnots > maxNumberOfKnots:
                 maxNumberOfKnots = numberOfKnots
             if numberOfKnots > temp_cutoff4anchoring: #(30k x 30k matrix or equivalent)
-                #print(temp_cutoff4anchoring, numberOfKnots, anchor)
                 temp_greedy_anchor = greedy_anchor_selection_large(file_minimum_anchor_score, labse_score_matrix)
                 if temp_greedy_anchor is not None:
                     greedy_anchor = [str(temp_greedy_anchor[0] + start_source), str(temp_greedy_anchor[1] + start_target)]
@@ -541,7 +531,6 @@ def greedy_procedure_large(file_name, anchor_list, file_minimum_anchor_score, an
             except:
                 start_target = int(anchor[1])
         anchor_list = new_anchor_list.copy()
-        #print(anchor_list)
         temp_cutoff4anchoring = temp_cutoff4anchoring * cutoffpenalty
         file_minimum_anchor_score = file_minimum_anchor_score - anchor_score_subtraction
     labse_score_matrix = [1]
@@ -554,8 +543,6 @@ def greedy_procedure(file_name, anchor_list, file_minimum_anchor_score, anchor_s
     anchor_source_list, anchor_target_list, anchor_source_list_lines, anchor_target_list_lines, anchor_src_emb_dict, anchor_trg_emb_dict = create_anchor_files(file_name, 1, True)
     # this will not work if we have overlaps (other than 1)
     labse_score_matrix = np.asarray(create_labse_score_matrix(anchor_source_list, anchor_target_list, anchor_src_emb_dict, anchor_trg_emb_dict))
-    #print('labse_score_matrix.shape', labse_score_matrix.shape)
-    #print('Greedy RAM Used (GB):', psutil.virtual_memory()[3] / 1000000000)
 
     torch.cuda.empty_cache()
     maxNumberOfKnots = 9223372036854775807
@@ -564,8 +551,6 @@ def greedy_procedure(file_name, anchor_list, file_minimum_anchor_score, anchor_s
         start_target = 0
         new_anchor_list = []
         for anchor in anchor_list:
-            #print(anchor)
-            #print('Greedy in anchors RAM Used (GB):', psutil.virtual_memory()[3] / 1000000000)
             try:
                 end_source = int(anchor[0].split(',')[0])
             except:
@@ -576,7 +561,6 @@ def greedy_procedure(file_name, anchor_list, file_minimum_anchor_score, anchor_s
                 end_target = anchor[1]
             numberOfKnots = (end_source - start_source) * (end_target - start_target)
             if numberOfKnots > temp_cutoff4anchoring:
-                #print(temp_cutoff4anchoring, numberOfKnots, anchor)
                 greedy_anchor = greedy_anchor_selection(start_source, start_target, anchor,
                                                         anchor_source_list_lines,
                                                         anchor_target_list_lines,
@@ -670,7 +654,6 @@ def process_file(filename, minimum_labse_anchor):
     processInfo.init_file(file_name)
     file_minimum_labse_anchor = minimum_labse_anchor
 
-    #print('Reading Files')
     ## Read file dictionaries ##
     source_dict = read_sentences(source_language_folder, file_name)
     target_dict = read_sentences(target_language_folder, file_name)
@@ -798,7 +781,6 @@ def process_file(filename, minimum_labse_anchor):
                                 start_source = 0
                                 start_target = 0
                                 for anchor in anchor_list:
-                                    #print(anchor)
                                     try:
                                         end_source = int(anchor[0].split(',')[0])
                                     except:
@@ -863,7 +845,6 @@ def process_file(filename, minimum_labse_anchor):
         if anchor_list == []:
             anchor_list = [[source_len, target_len]]
 
-        #print(anchor_list)
         processInfo.set_anchors(anchor_list)
 
         ## Read LaBSE embeddings ##
@@ -872,10 +853,7 @@ def process_file(filename, minimum_labse_anchor):
         trg_emb_dict = open_emb_file(temporary_folder + '/overlaps.' + file_name + '.trg')
 
         ## Run aligner ##
-
-        #mechanismi til að díla við multiprocessing anchors
         processInfo.set_status("Creating anchor chunks")
-
         start_anchor = (0, 0)
         matrix_anchors = ()
         for curr_anchor in anchor_list:
@@ -891,13 +869,9 @@ def process_file(filename, minimum_labse_anchor):
             matrix_anchors += (((start_anchor[0]-1, start_anchor[1]-1), (this_anchor[0],this_anchor[1])),)
             start_anchor = this_anchor
 
-        # gæti þurft að skrifa mechanisma til að skoða 8x8 matrix (eða max_concats x max_concats) þar sem akkeri mætast
-        # þá væri þetta enn betra (samt megavesen)
         torch.cuda.empty_cache()
         processInfo.set_status("Aligning...")
         start_align = time.process_time()
-
-        #print("matrix_anchors", matrix_anchors)
 
         total_path = align_anchors_multi(matrix_anchors, source_dict, target_dict, src_emb_dict, trg_emb_dict, args.num_proc, score_cutoff,
                                          max_concats, processInfo, minimum_length_words, maximum_length_words, start_penalty_word_number,
@@ -935,7 +909,6 @@ def get_filesleft(alignlist):
 
 # Create overlaps
 if __name__ == '__main__':
-    #búa til logg - taka líka tímann við undirbúning
     tokenizer, model = load_labse_model(args.proc_device, 'setu4993/LaBSE')
     files2align = {}
     filesdone = {}
@@ -960,7 +933,7 @@ if __name__ == '__main__':
                 processInfo.set_status('Getting files to align...')
                 alignlist = get_filesleft(alignlist)
                 processInfo.files_left = len(alignlist)
-                redolist_interval = int(len(alignlist)/500)+1 #setja þetta 500 í config í byrjun
+                redolist_interval = int(len(alignlist)/500)+1 #Allow the user to set this number (500) in the input parameters
             if len(alignlist) > 0:
                 file = alignlist.pop()
 
@@ -968,8 +941,6 @@ if __name__ == '__main__':
                 filesdonefile.write(file + '\n')
                 filesdonefile.close()
 
-                #print_processfile = 'Processing ' + file
-                #print_filesleft = '  Files left: ' + str(len(alignlist))
                 processInfo.files_left = len(alignlist)
                 process_file(file, minimum_labse_anchor)
     finally:
@@ -983,3 +954,5 @@ if __name__ == '__main__':
         os.rmdir(temporary_folder)
     except:
         pass
+
+    print('Aligned ' + str(len(list(files2align.keys())))) + ' files in ' + str(datetime.datetime.now() - processInfo.start_time) + ' seconds.'
