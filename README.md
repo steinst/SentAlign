@@ -1,8 +1,7 @@
 # SentAlign
 
-SentAlign is a sentence alignment tool for parallel corpora.  
-It uses [LaBSE](https://aclanthology.org/2022.acl-long.62.pdf) embeddings to find sentence pairs that are similar in meaning 
-and an alignment algorithm based on Dijkstra's algorithm to find the optimal alignment.
+SentAlign is a sentence alignment tool for parallel corpora. It uses [LaBSE](https://aclanthology.org/2022.acl-long.62.pdf) embeddings to find sentence pairs that are similar in meaning 
+and an alignment algorithm based on Dijkstra's algorithm to find the optimal alignment. Dynamic programming with cosine similarity tends to favour many-to-many alignments over 1-1 alignments. To counteract this we end with re-evaluating each alignment by inspecting mergers, insertions and deletions. The approach is described in more detail in the paper [SentAlign: Accurate and Scalable Sentence Alignment](). 
 
 ### License 
 Copyright 2023 Steinþór Steingrímsson
@@ -96,7 +95,6 @@ Which should give you the following results:
 '--source-language', '-sl', default='eng'
 '--target-language', '-tl', default='isl'
 '--filename', '-f', help='Name of source and target file(s) to be aligned', type=str, nargs='+'
-'--temporary-folder', '-tmp', default='tmp2'
 '--output-folder', '-out', default='output'
 ```
 ### Aligner settings
@@ -114,9 +112,8 @@ Which should give you the following results:
 ```
 ### Other settings
 ```bash
-'--reload-model', '-reload', default=True
-'--proc-device', '-device', default='cuda'
-'--num-proc', '-proc', default=8
+'--proc-device', '-device', help='cuda for gpu, cpu if you don''t have an NVIDIA graphics card', default='cuda'
+'--num-proc', '-proc', help='number of processors to allocate for the pathfinding calculations', default=8
 ```
 
 ## Publications

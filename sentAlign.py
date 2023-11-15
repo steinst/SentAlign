@@ -36,7 +36,6 @@ parser.add_argument('--corpus-folder', '-dir')
 parser.add_argument('--source-language', '-sl', default='eng')
 parser.add_argument('--target-language', '-tl', default='isl')
 parser.add_argument('--filename', '-f', help='Name of source and target file(s) to be aligned', type=str, nargs='+')
-#parser.add_argument('--temporary-folder', '-tmp', default='tmp2')
 parser.add_argument('--output-folder', '-out', default='output')
 #Aligner settings
 parser.add_argument('--max-concatenations', '-concats', type=int, help='Maximum number of concatenated sentences per language', default=4)
@@ -49,9 +48,8 @@ parser.add_argument('--penalty-per-word', '-wordpen', type=float, help='Penalty 
 parser.add_argument('--anchoring-delimiter', '-anchor', type=int, help='Maximum nodes in the alignment graph, before applying hard delimiters.', default=4000000)
 parser.add_argument('--maximum-length-gale-church', '-maxgc', type=float, help='Maximum number of sentences in file for Gale-Church alignment. If longer, only greedy alignment selection applied', default=10000)
 # Other settings
-parser.add_argument('--reload-model', '-reload', default=True)
-parser.add_argument('--proc-device', '-device', default='cuda')
-parser.add_argument('--num-proc', '-proc', default=8)
+parser.add_argument('--proc-device', '-device', help='cuda for gpu, cpu if you don''t have an NVIDIA graphics card', default='cuda')
+parser.add_argument('--num-proc', '-proc', help='number of processors to allocate for the pathfinding calculations', default=8)
 args = parser.parse_args()
 
 corpus_folder = args.corpus_folder
