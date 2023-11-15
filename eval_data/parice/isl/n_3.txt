@@ -1,19 +1,19 @@
-0	Þrátt fyrir að margt er ólíkt með löndum Norðurlanda í víðtækum skilningi með tilliti til skipulags og stefnu í vinnumarkaðsmálum, þá er til staðar kjarni sameiginlegra vinnuaðferða, viðmiða og gilda, 
-1	sem til samans skilgreina einkenni atvinnulífsins og stefnunnar í vinnumarkaðsmálum á Norðurlöndunum, sem réttlæta tal um „norræna líkanið“, 
-2	en á mikilvægum sviðum skilur það sig frá aðstæðum á vinnumarkaði í flestum öðrum löndum − bæði í Evrópu og um víða veröld. 
-3	Með tímanum höfum við þróað hér á Norðurlöndum fastmótaða hefð um kjarasamningagerð milli atvinnurekenda og launþega, 
-4	sem byggir á skilningi á gildi vel skipulagðs vinnumarkaðar, þar sem ríkið og löggjafarvaldið gegna stuðningshlutverki og halda sig til hlés. 
-5	Í alþjóðlegum samanburði hefur víðtækt skipulag með starfsemi samtaka bæði af hálfu launþega og atvinnurekenda styrkt bæði réttmæti og starfshæfni „líkansins“. 
-6	Það má segja sem svo að byggður hafi verið upp „sáttavilji“, sem er andstæða afstöðunnar milli aðila vinnumarkaðarins víða annars staðar. 
-7	Það er mikilvægt að skilja að þessi þróun hefur ekki átt sér stað í samfélagslegu eða pólitísku tómarúmi, heldur í sögulegu samhengi við uppbyggingu norrænna velferðarsamfélaga okkar, 
-8	sem byggja á viðurkenningu á félagslegri og mannlegri samfélagsábyrgð. 
-9	Og á sama hátt og munur er á vinnumarkaði á Norðurlöndum og í mörgum öðrum löndum, þá skera Norðurlöndin sig einnig úr því þau einkennast af minna misrétti og meira félagslegu öryggi en víðast hvar annars staðar. 
-10	Hin pólitíska menning um kjarasamningagerð, þar sem hlutfallskosningar hafa stutt ákveðið raunsæi og nauðsyn málamiðlana, fellur einnig vel að þróuninni á vinnumarkaði. 
-11	Til þessa heyrir að öll þessi þróun hefur leitt til velstæðra og skilvirkra samfélaga. 
-12	Þegar vísað er til „norræna líkansins“ úti í heimi er ekki bara verið að hugsa til aðstæðna á vinnumarkaði, heldur til eðlis samfélaga okkar í heild sinni. 
-13	Umfjöllunarefni þessarar skýrslu er ekki almenn samfélagspólitík, heldur atvinnulífið og samstarf þar að lútandi á Norðurlöndunum. 
-14	En marga þætti atvinnulífsins er ekki hægt að aðgreina á skýran hátt frá öðrum sviðum (t.d. menntamálum, heilbrigðismálum og fólksflutningum). 
-15	Lýðræðislegt velferðarþjóðfélag og „norræna vinnumarkaðslíkanið“ eru forsendur hvors annars. 
-16	Samningurinn um sameiginlegan vinnumarkað á Norðurlöndum frá 1954 var framsækin ákvörðun, sem hefur stuðlað að hagvexti og atvinnu í löndunum. 
-17	En á síðastliðnum 20 árum hafa nánast ekki farið fram sambærilegar kerfisbundnar aðgerðir til að samræma og samþætta Norðurlöndin á ólíkum sviðum atvinnulífsins. 
+0	Þrátt fyrir að margt er ólíkt með löndum Norðurlanda í víðtækum skilningi með tilliti til skipulags og stefnu í vinnumarkaðsmálum, þá er til staðar kjarni sameiginlegra vinnuaðferða, viðmiða og gilda,
+1	sem til samans skilgreina einkenni atvinnulífsins og stefnunnar í vinnumarkaðsmálum á Norðurlöndunum, sem réttlæta tal um „norræna líkanið“,
+2	en á mikilvægum sviðum skilur það sig frá aðstæðum á vinnumarkaði í flestum öðrum löndum − bæði í Evrópu og um víða veröld.
+3	Með tímanum höfum við þróað hér á Norðurlöndum fastmótaða hefð um kjarasamningagerð milli atvinnurekenda og launþega,
+4	sem byggir á skilningi á gildi vel skipulagðs vinnumarkaðar, þar sem ríkið og löggjafarvaldið gegna stuðningshlutverki og halda sig til hlés.
+5	Í alþjóðlegum samanburði hefur víðtækt skipulag með starfsemi samtaka bæði af hálfu launþega og atvinnurekenda styrkt bæði réttmæti og starfshæfni „líkansins“.
+6	Það má segja sem svo að byggður hafi verið upp „sáttavilji“, sem er andstæða afstöðunnar milli aðila vinnumarkaðarins víða annars staðar.
+7	Það er mikilvægt að skilja að þessi þróun hefur ekki átt sér stað í samfélagslegu eða pólitísku tómarúmi, heldur í sögulegu samhengi við uppbyggingu norrænna velferðarsamfélaga okkar,
+8	sem byggja á viðurkenningu á félagslegri og mannlegri samfélagsábyrgð.
+9	Og á sama hátt og munur er á vinnumarkaði á Norðurlöndum og í mörgum öðrum löndum, þá skera Norðurlöndin sig einnig úr því þau einkennast af minna misrétti og meira félagslegu öryggi en víðast hvar annars staðar.
+10	Hin pólitíska menning um kjarasamningagerð, þar sem hlutfallskosningar hafa stutt ákveðið raunsæi og nauðsyn málamiðlana, fellur einnig vel að þróuninni á vinnumarkaði.
+11	Til þessa heyrir að öll þessi þróun hefur leitt til velstæðra og skilvirkra samfélaga.
+12	Þegar vísað er til „norræna líkansins“ úti í heimi er ekki bara verið að hugsa til aðstæðna á vinnumarkaði, heldur til eðlis samfélaga okkar í heild sinni.
+13	Umfjöllunarefni þessarar skýrslu er ekki almenn samfélagspólitík, heldur atvinnulífið og samstarf þar að lútandi á Norðurlöndunum.
+14	En marga þætti atvinnulífsins er ekki hægt að aðgreina á skýran hátt frá öðrum sviðum (t.d. menntamálum, heilbrigðismálum og fólksflutningum).
+15	Lýðræðislegt velferðarþjóðfélag og „norræna vinnumarkaðslíkanið“ eru forsendur hvors annars.
+16	Samningurinn um sameiginlegan vinnumarkað á Norðurlöndum frá 1954 var framsækin ákvörðun, sem hefur stuðlað að hagvexti og atvinnu í löndunum.
+17	En á síðastliðnum 20 árum hafa nánast ekki farið fram sambærilegar kerfisbundnar aðgerðir til að samræma og samþætta Norðurlöndin á ólíkum sviðum atvinnulífsins.
 18	Það er því ástæða til að leita möguleika, þar sem sameiginlegar lausnir geta varðveitt og eflt þau gildi sem eru okkur sameiginleg og sem geta verið svar við þeim vandamálum, sem við stöndum andspænis í dag.

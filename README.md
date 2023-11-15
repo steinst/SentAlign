@@ -47,24 +47,45 @@ python3 files2align.py -dir /path/to/files --source-language eng
 Then you run the alignments. Aligning English and Icelandic files:
 
 ```bash
-python3 sentAlign.py -dir /path/to/files/to/align -sl eng -tl isl
+python3 sentAlign.py -dir /path/to/files -sl eng -tl isl
 ```
+
+The aligner generates two type of files in the output folder: `/path/to/files/output`. Files ending with `.path` files containing the alignments and LaBSE scores. They are formatted like this:
+
+```
+[0]:[0,1]:0.7565563
+[1]:[2]:0.99999994
+[2]:[3]:0.92132425
+[3]:[4]:0.87890404
+[4]:[5,6]:0.9721296
+[]:[7]:0
+[5]:[8]:0.89229476
+[6]:[9]:0.70389956
+...
+```
+
+and `.aligned` files containing the aligned sentence pairs as well as the LaBSE score. Source sentence in the first column, target sentence in the second and LaBSE score in the third:
+
+
 
 ## Evaluating Test Sets
 The SentAlign paper evaluates the aligner on two evaluation sets: the German-French evaluation set comprising data from the text+berg corpus and published with BleuAlign, and an Icelandic-English test set using data from the Parice corpus. 
 
-To reproduce the results run the following commands for the German-French test set:
+To reproduce the results, run the following commands for the German-French test set:
 
 ```bash
 python3 files2align.py -dir eval_data/bleualign --source-language deu
 python3 sentAlign.py -dir eval_data/bleualign -sl deu -tl fra
 python3 evaluation/evaluate.py -t eval_data/bleualign/output/test*.txt.path -g eval_data/bleualign/gold/test*.txt
 ```
-
-
-And for the Icelandic-English test set:
-
-```bash
+Which should give you the following results:
+```
+ ---------------------------------
+|             |  Strict |    Lax  |
+| Precision   |   0.935 |   0.998 |
+| Recall      |   0.929 |   0.933 |
+| F1          |   0.932 |   0.964 |
+ ---------------------------------
 ```
 
 ## Parameters

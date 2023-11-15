@@ -1,13 +1,13 @@
 0	Arwen is dying.
 1	She will not long survive the evil that now spreads from Mordor.
 2	The light of the Evenstar is failing.
-3	As Sauron's power grows, 
+3	As Sauron's power grows,
 4	her strength wanes.
 5	Arwen's life is now tied to the fate of the Ring.
 6	The Shadow is upon us, Aragorn.
 7	The end has come.
 8	It will not be our end, but his.
-9	You ride to war, 
+9	You ride to war,
 10	but not to victory.
 11	Sauron's armies march on Minas Tirith, this you know.
 12	But in secret he sends another force which will attack from the river.
@@ -22,7 +22,7 @@
 21	They believe in nothing.
 22	They answer to no one.
 23	They will answer to the king of Gondor.
-24	Andûril, the Flame of the West, 
+24	Andûril, the Flame of the West,
 25	forged from the shards of Narsil.
 26	Sauron will not have forgotten the Sword of Elendil.
 27	The blade that was broken shall return to Minas Tirith.

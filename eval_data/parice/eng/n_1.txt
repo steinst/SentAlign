@@ -1,25 +1,25 @@
-0	Nordic co-operation is one of the world’s most extensive forms of regional collaboration, 
-1	involving Denmark, Finland, Iceland, Norway, Sweden, the Faroe Islands, Greenland, and Åland. 
-2	Nordic co-operation has firm traditions in politics, the economy, and culture. 
-3	It plays an important role in European and international collaboration, and aims at creating a strong Nordic community in a strong Europe. 
-4	Nordic co-operation seeks to safeguard Nordic and regional interests and principles in the global community. 
-5	Shared Nordic values help the region solidify its position as one of the world’s most innovative and competitive. 
-6	At least one regular session is held per annum, during which the time and venue of the following regular session are fixed. 
-7	The Presidium is empowered to change this decision should circumstances require. 
-8	Other sessions or theme sessions are held at the behest of the Presidium 
-9	or when two governments or 25 elected members submit a request for one. 
-10	The time and venue are determined by the Presidium.  
-11	The Plenary is the Council’s supreme decision-making body. 
-12	Its composition is prescribed by the Helsinki Treaty, 
-13	which also states that the Plenary adopt recommendations, 
-14	make other representations and present statements of opinion to one or more governments or to the Council of Ministers. 
-15	The Presidium is the Council’s supreme decision-making body when the Plenary is not sitting and has the same powers as the Plenary. 
-16	It is responsible for the Council’s activities and co-ordinates them with national parliaments and international organisations. 
-17	The Council has four committees: 
-18	the Committee for Knowledge and Culture in the Nordic Region, 
-19	the Committee for a Sustainable Nordic Region, 
-20	the Committee for Growth and Development in the Nordic Region and the Committee for Welfare in the Nordic Region. 
-21	The committees prepare business within their areas of competence prior to final consideration by the Council. 
-22	The Control Committee exercises parliamentary oversight over activities funded from Nordic budgets and conducts any audits determined by the Plenary. 
-23	The Election Committee draws up lists of nominations and organises any elections held during the Plenary. 
-24	The Helsinki Treaty sets out the delegations and their composition. 
+0	Nordic co-operation is one of the world’s most extensive forms of regional collaboration,
+1	involving Denmark, Finland, Iceland, Norway, Sweden, the Faroe Islands, Greenland, and Åland.
+2	Nordic co-operation has firm traditions in politics, the economy, and culture.
+3	It plays an important role in European and international collaboration, and aims at creating a strong Nordic community in a strong Europe.
+4	Nordic co-operation seeks to safeguard Nordic and regional interests and principles in the global community.
+5	Shared Nordic values help the region solidify its position as one of the world’s most innovative and competitive.
+6	At least one regular session is held per annum, during which the time and venue of the following regular session are fixed.
+7	The Presidium is empowered to change this decision should circumstances require.
+8	Other sessions or theme sessions are held at the behest of the Presidium
+9	or when two governments or 25 elected members submit a request for one.
+10	The time and venue are determined by the Presidium.
+11	The Plenary is the Council’s supreme decision-making body.
+12	Its composition is prescribed by the Helsinki Treaty,
+13	which also states that the Plenary adopt recommendations,
+14	make other representations and present statements of opinion to one or more governments or to the Council of Ministers.
+15	The Presidium is the Council’s supreme decision-making body when the Plenary is not sitting and has the same powers as the Plenary.
+16	It is responsible for the Council’s activities and co-ordinates them with national parliaments and international organisations.
+17	The Council has four committees:
+18	the Committee for Knowledge and Culture in the Nordic Region,
+19	the Committee for a Sustainable Nordic Region,
+20	the Committee for Growth and Development in the Nordic Region and the Committee for Welfare in the Nordic Region.
+21	The committees prepare business within their areas of competence prior to final consideration by the Council.
+22	The Control Committee exercises parliamentary oversight over activities funded from Nordic budgets and conducts any audits determined by the Plenary.
+23	The Election Committee draws up lists of nominations and organises any elections held during the Plenary.
+24	The Helsinki Treaty sets out the delegations and their composition.

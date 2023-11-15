@@ -28,7 +28,7 @@ Reimplementation of lax and strict precision and recall, based on
 Precision is the number of correct alignments divided by the number of alignments in the test set.
 Recall is calculated as the number of correct alignments divided by the number of gold alignments.
 Lax precision and recall are calculated as precision and recall, but with the following relaxation:
-[ATH lýsingu]
+
     - a test alignment is considered correct if it overlaps with a gold alignment on the source side
         and on the target side
     - a gold alignment is considered correct if it overlaps with a test alignment on the source side
@@ -50,7 +50,7 @@ def read_alignments(fin):
             alignments.append((src, tgt))
 
     # I know bluealign files have a few entries entries missing,
-    #   but I don't fix them in order to be consistent previous reported scores
+    # but I don't fix them in order to be consistent previous reported scores
     return alignments
 
 

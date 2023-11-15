@@ -1,29 +1,29 @@
 0	ALMA nær mikilvægum áfanga
 1	Þrjú samtengd loftnet tryggja bjart ár framundan hjá þessari byltingarkenndu sjónaukaröð
-2	Mikilvægur áfangi hefur náðst í Atacama Large Millimeter/submillimeter Array (ALMA) stjörnustöðinni 
+2	Mikilvægur áfangi hefur náðst í Atacama Large Millimeter/submillimeter Array (ALMA) stjörnustöðinni
 3	sem tryggir að þessi nýi, byltingarkenndi sjónauki mun koma til með að skila hágæða myndum af alheiminum.
 4	Í fyrsta sinn hafa stjörnufræðingar og verkfræðingar tengt saman þrjú loftnet á hinum 5000 metra háa mælingarstað stjörnustöðvarinnar í norður Chile.
-5	Þrjú samtengd loftnet marka upphafið að nákvæmum myndum af hinum kalda alheimi í betri upplausn en áður hefur þekkst. 
+5	Þrjú samtengd loftnet marka upphafið að nákvæmum myndum af hinum kalda alheimi í betri upplausn en áður hefur þekkst.
 6	Þau eru jafnframt það sem upp á vantar svo leiðrétta megi villur sem koma upp þegar þegar aðeins tvö loftnet eru samtengd.
 7	Þann 20. nóvember 2009 var þriðja loftneti ALMA stjörnustöðvarinnar komið fyrir á Chajnantor sléttunni í 5000 metra hæð í Andesfjöllunum í Chile.
-8	Eftir fjölmargar tækniprófandi gerðu stjörnufræðingar og verkfræðingar fyrstu mælingarnar á stjarnfræðilegu fyrirbæri með öllum þremur 12 metra breiðu loftnetunum samtengdum. 
+8	Eftir fjölmargar tækniprófandi gerðu stjörnufræðingar og verkfræðingar fyrstu mælingarnar á stjarnfræðilegu fyrirbæri með öllum þremur 12 metra breiðu loftnetunum samtengdum.
 9	Þeir vinna nú myrkrana á milli við að ná stöðugleika í kerfið og gera það starfhæft.
 10	„Líkja má fyrstu merkjum tveggja ALMA loftneta, sem náðust í október, við fyrstu hljóðin sem barn gefur frá sér“ segir Leonardo Tisti, vísindamaður sem starfar hjá ESO við ALMA verkefnið.
 11	„Mælingar með þremur loftnetum er sú stund þegar barnið segir fyrstu raunverulegu orðin, nokkuð sem er alltaf stór áfangi!
 12	Samtenging þriggja loftneta eru fyrstu raunverulegu skrefin í átt til þess að ná skörpum og nákvæmum myndum á hálfsmillímetra bylgjulengdum.“
-13	Samtenging þriggja loftneta var lykilpróf fyrir rafeinda- og hugbúnaðinn sem verið er að setja upp í ALMA 
+13	Samtenging þriggja loftneta var lykilpróf fyrir rafeinda- og hugbúnaðinn sem verið er að setja upp í ALMA
 14	og árangurinn af því gefur vísbendingar um getu stjörnustöðvarinnar í framtíðinni.
 15	Þegar smíði ALMA lýkur munu 66 loftnet starfa saman sem „víxlmælir“ og mynda einn stóran sjónauka sem mælir millímetra og hálfsmillímetra geislun utan úr geimnum.
 16	Nauðsynlegt er að sameina mælingar hvers loftnets í eitt merki svo unnt sé að ná þeim hágæða myndum á þeim bylgjulengdum sem sjónaukinn er hannaður til að mæla.
 17	Samtenging loftnetanna er nauðsynlegt skref í átt að því að sjónaukinn myndi víxlmæli.
 18	Fyrstu árangursríku mælingarnar voru gerðar með einungis tveimur loftnetum á Chajnantor sléttunni í október 2009 (sjá tilkynningu ESO) og sýndu vel gæði tækjanna.
-19	Þriðja loftnetið markar hins vegar þáttaskil í framtíð stjörnustöðvarinnar. 
+19	Þriðja loftnetið markar hins vegar þáttaskil í framtíð stjörnustöðvarinnar.
 20	Þessi stóri áfangi tryggir að nú má gera sjálfstæðar prófanir á gæðum víxlmælisins.
-21	„Notkun þriggja (eða fleiri) loftneta í víxlmæli er mikil framför úr tveimur loftnetum“ 
+21	„Notkun þriggja (eða fleiri) loftneta í víxlmæli er mikil framför úr tveimur loftnetum“
 22	segir Wolfgang Wild, verkefnisstjóri evrópska hluta ALMA.
 23	„Það gerir stjörnufræðingum kleift að átta sig á þáttum sem draga úr myndgæðum og rekja má til tækjanna sjálfra eða truflana í lofthjúpnum.
 24	Með samanburði á mælingum sem gerðar eru samtímis með þremur stökum loftnetum er hægt að eyða þessum áhrifum - nokkuð sem er ómögulegt að gera með einungis tveimur loftnetum.“
-25	Til að ná þessu mikilvæga markmiði mældu stjörnufræðingar ljós frá dulstirninu QSO B1921-293, sem er langt fyrir utan Vetrarbrautina okkar. 
+25	Til að ná þessu mikilvæga markmiði mældu stjörnufræðingar ljós frá dulstirninu QSO B1921-293, sem er langt fyrir utan Vetrarbrautina okkar.
 26	Stjörnufræðingar þekkja þetta dulstirni vel því það gefur frá sér mikla útgeislun á mjög löngum bylgjulengdum, þar á meðal á millímetra og hálfsmillímetrasviðinu sem ALMA nemur.
 27	Mælingarnar voru stöðugar sem sýndi að loftnetin virka mjög vel.
 28	Á næstunni verður nokkrum loftnetum til viðbótar komið fyrir á Chajnantor sléttunni sem gerir stjörnufræðingum kleift að fá fyrstu niðurstöður frá ALMA árið 2011.

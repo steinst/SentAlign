@@ -242,9 +242,11 @@ def open_emb_file(file_name):
     return emb_dict
 
 
-def get_pairs(path, source_dict, target_dict):
+def get_pairs(path, source_dict, target_dict, total_score):
     pairs = []
     path_pairs = path.strip().split('\n')
+    score_list = total_score.strip().split('\n')
+    ctr = 0
     for p in path_pairs:
         s,t = p.strip().replace('[','').replace(']','').split(':')
         s_nums = s.split(',')
@@ -263,20 +265,35 @@ def get_pairs(path, source_dict, target_dict):
             target_out = target_out.strip().lstrip()
         else:
             target_out = 'NULLALIGN'
-        pairs.append([source_out, target_out])
+        pairs.append([source_out, target_out, score_list[ctr]])
+        ctr += 1
     return pairs
 
 
-def write_path_to_file(path, file_name):
+def write_path_to_file(path, file_name, total_score):
     path = path.replace(':', ']:[').strip()
+    out_path = ''
+    pathlist = path.split('\n')
+    scorelist = total_score.split('\n')
+    ctr = 0
+    for i in pathlist:
+        out_path += i + ':' + scorelist[ctr] + '\n'
+        ctr += 1
     with open(output_folder + '/' + file_name + '.path', 'w') as fo:
-        fo.write(path + '\n')
+        fo.write(out_path)
 
 
-def write_pairs_to_file(pairs, file_name):
+def write_pairs_to_file(pairs, file_name, total_score):
+    text_scores = []
+    for i in total_score:
+        if i != 0:
+            text_scores.append(str(i))
+
     with open(output_folder + '/' + file_name + '.aligned', 'w') as fo:
+        ctr = 0
         for p in pairs:
-            outstring = p[0] + '\t' + p[1] + '\n'
+            outstring = p[0] + '\t' + p[1] + '\t' + p[2] + '\n'
+            ctr += 1
             if outstring.find('NULLALIGN') == -1:
                 fo.write(outstring)
 
@@ -669,14 +686,11 @@ def process_file(filename, minimum_labse_anchor):
     src_input_file = source_language_folder + '/' + file_name
     src_overlaps_file = temporary_folder + '/overlaps.' + file_name + '.src'
     get_overlaps(src_overlaps_file, src_input_file, max_concats)
-    #get_overlaps(src_overlaps_file, src_input_file, args.num_overlaps)
     #target
     trg_input_file = target_language_folder + '/' + file_name
     trg_overlaps_file = temporary_folder + '/overlaps.' + file_name + '.trg'
     get_overlaps(trg_overlaps_file, trg_input_file, max_concats)
-    #get_overlaps(trg_overlaps_file, trg_input_file, args.num_overlaps)
 
-    #print('Creating LaBSE embeddings')
     ## create LaBSE embeddings ##
     create_emb_file(temporary_folder + '/overlaps.' + file_name + '.src', max_length)
     create_emb_file(temporary_folder + '/overlaps.' + file_name + '.trg', max_length)
@@ -873,18 +887,18 @@ def process_file(filename, minimum_labse_anchor):
         processInfo.set_status("Aligning...")
         start_align = time.process_time()
 
-        total_path = align_anchors_multi(matrix_anchors, source_dict, target_dict, src_emb_dict, trg_emb_dict, args.num_proc, score_cutoff,
+        total_path, total_score = align_anchors_multi(matrix_anchors, source_dict, target_dict, src_emb_dict, trg_emb_dict, args.num_proc, score_cutoff,
                                          max_concats, processInfo, minimum_length_words, maximum_length_words, start_penalty_word_number,
                                          penalty_per_word, free_concats)
 
-        finalpairs = get_pairs(total_path, source_dict, target_dict)
+        finalpairs = get_pairs(total_path, source_dict, target_dict, total_score)
         align_info = processInfo.print_info()
 
         with open(align_info_folder + file_name + '.info', 'w') as fo:
             fo.write(align_info)
 
-        write_path_to_file(total_path, file_name)
-        write_pairs_to_file(finalpairs, file_name)
+        write_path_to_file(total_path, file_name, total_score)
+        write_pairs_to_file(finalpairs, file_name, total_score)
         end_align = time.process_time()
         align_elapsed = end_align - start_align
         processInfo.set_elapsed_align(align_elapsed)
@@ -956,6 +970,5 @@ if __name__ == '__main__':
     except:
         pass
 
-    print('\r', end='', flush=True)
-    print('Aligned ' + str(len(list(files2align.keys()))) + ' files in ' + str(datetime.datetime.now() - main_starttime) + ' seconds.')
+    print('\nAligned ' + str(len(list(files2align.keys()))) + ' files in ' + str((datetime.datetime.now() - main_starttime).total_seconds()) + ' seconds.', flush=True)
 
