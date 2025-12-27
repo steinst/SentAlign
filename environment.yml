@@ -1,10 +1,12 @@
 name: SentAlign
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
-  - anaconda
 dependencies:
-  - python=3.8
-  - transformers=4.22.2
-  - numpy=1.22.1
-  - cython=0.29.27
-  - pytorch-gpu=1.13.0
+  - python=3.12
+  - numpy=2.0.2
+  - transformers=4.57.3
+  - cython=3.0.12
+  - pytorch=2.9
+  - pytorch-cuda=12.6

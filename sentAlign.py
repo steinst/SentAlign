@@ -16,9 +16,7 @@ import datetime
 import string
 import random
 import time
-import pyximport
 
-pyximport.install(setup_args={'include_dirs':np.get_include()}, inplace=True, reload_support=True)
 from galechurch import gale_church
 from greedy import greedy_anchor_selection, get_highest_labse_anchor, greedy_anchor_selection_large
 from anchoring import calculate_anchor_nomatrix_set, calculate_anchor_set

@@ -17,12 +17,24 @@ git clone https://github.com/steinst/SentAlign.git
 cd SentAlign
 ```
 
-The environment can be built using the provided environment.yml file:
+Before using this library, set up your development environment with the required dependencies. You can do this using either `conda` or `pip`
+#### Using Conda
 ```bash
 conda env create -f environment.yml
+conda activate SentAlign
+python3 setup.py build_ext --inplace
+```
+#### Using Pip
+```bash
+python3 -m venv SentAlign
+source SentAlign/bin/activate  # On Windows use `.\SentAlign\Scripts\activate`
+pip install -r requirements.txt
+python3 setup.py build_ext --inplace
 ```
 
 ### Running the aligner
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1vdY7mwe8Yfn2FFtZEARUNu_ya5KwrImi?usp=sharing) We’ve provided a Google Colab notebook to make it easy for you to test out the demo without setting up your local environment.
+
 We assume that the documents to be aligned have the same names in the source and target language, but are kept in folders named using the language code. For example, if we want to align the files in the folder `/path/to/files` we would have the following structure:
 ```bash
 /path/to/files/eng/file1.txt

@@ -9,8 +9,8 @@ logger = logging.getLogger('sentenceAligner')
 def align_anchors_multi(matrix_anchors, source_dict, target_dict, src_emb_dict, trg_emb_dict, num_proc, score_cutoff,
                         max_concats, processInfo, minimum_length_words, maximum_length_words, start_penalty_word_number,
                         penalty_per_word, free_concats):
-    total_path = ''
-    total_score = ''
+    total_path_chunks = []
+    total_score_chunks = []
     total_calculations = 0
     for anchor_pair in matrix_anchors:
         source_length = anchor_pair[1][0] - anchor_pair[0][0] + 1
@@ -31,9 +31,9 @@ def align_anchors_multi(matrix_anchors, source_dict, target_dict, src_emb_dict, 
                                repeat(minimum_length_words), repeat(maximum_length_words), repeat(start_penalty_word_number),
                                repeat(penalty_per_word), repeat(free_concats), repeat(processInfo)))
         for result in res:
-            total_path += result[1]
-            total_score += result[2]
-    return total_path, total_score
+            total_path_chunks.append(result[1])
+            total_score_chunks.append(result[2])
+    return ''.join(total_path_chunks), ''.join(total_score_chunks)
 
 
 def align_anchors(anchor, source_dict, target_dict, src_emb_dict, trg_emb_dict, score_cutoff, max_concats,
@@ -50,6 +50,10 @@ def align_anchors(anchor, source_dict, target_dict, src_emb_dict, trg_emb_dict, 
     best_score_array = [[0 for y in range(end_target - start_target)] for x in range(end_source - start_source)]
     best_path_array = [['' for y in range(end_target - start_target)] for x in range(end_source - start_source)]
     best_parent_array = [[(-1,-1) for y in range(end_target - start_target)] for x in range(end_source - start_source)]
+
+    # cache word counts per unique concat to avoid repeated string scans
+    source_word_counts = {}
+    target_word_counts = {}
 
     for i in range(start_source, end_source):
         source_concats, source_concats_count_dict = create_concats(start_source, i, max_concats, source_length, source_dict)
@@ -108,8 +112,15 @@ def align_anchors(anchor, source_dict, target_dict, src_emb_dict, trg_emb_dict, 
                     else:
                         best_node_score = 0
 
-                    s_concat_length = m.count(' ') + 1
-                    t_concat_length = n.count(' ') + 1
+                    s_concat_length = source_word_counts.get(m)
+                    if s_concat_length is None:
+                        s_concat_length = m.count(' ') + 1
+                        source_word_counts[m] = s_concat_length
+
+                    t_concat_length = target_word_counts.get(n)
+                    if t_concat_length is None:
+                        t_concat_length = n.count(' ') + 1
+                        target_word_counts[n] = t_concat_length
                     if (minimum_length_words <= s_concat_length <= maximum_length_words) and (minimum_length_words <= t_concat_length <= maximum_length_words) and (score_cutoff <= labse_score):
                         curr_penalty = 0
                         if s_concat_length > start_penalty_word_number:

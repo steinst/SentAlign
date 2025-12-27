@@ -1,4 +1,7 @@
 # cython: language_level=3
+# cython: boundscheck=False
+# cython: wraparound=False
+# cython: cdivision=True
 
 cimport cython
 import numpy as np
@@ -19,13 +22,12 @@ def create_labse_score_matrix(anchor_source_list: list[str], anchor_target_list:
     i_ctr = 0
     for i in anchor_source_list:
         j_ctr = 0
-        for j in range(anchor_target_list):
+        for j in anchor_target_list:
         #atl_length = len(anchor_target_list)
         #for j_ctr in prange(0, atl_length, 1, nogil=True):
             try:
                 labse_score_matrix[i_ctr,j_ctr] = trg_emb_dict[j.strip()].dot(src_emb_dict[i.strip()].transpose())
             except Exception as e:
-                print(e)
                 labse_score_matrix[i_ctr,j_ctr] = 0
             j_ctr = j_ctr + 1
         i_ctr = i_ctr + 1
