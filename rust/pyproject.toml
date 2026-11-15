@@ -1,0 +1,31 @@
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "sentalign-rust"
+version = "2.0.0"
+description = "Rust path-search kernel for SentAlign (optional backend: --path-backend rust)"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [{ name = "Steinþór Steingrímsson" }]
+dependencies = ["numpy"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Rust",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[tool.maturin]
+python-source = "python"
+module-name = "sentalign_rust._core"
+features = ["pyo3/extension-module"]

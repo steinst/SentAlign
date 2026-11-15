@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=77", "wheel", "Cython>=3.0", "numpy>=1.26"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentalign"
+dynamic = ["version"]
+description = "SentAlign: accurate and scalable sentence alignment with LaBSE embeddings"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Steinþór Steingrímsson" }]
+keywords = ["sentence alignment", "parallel corpora", "machine translation", "LaBSE"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Cython",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "numpy",
+    "torch",
+    "transformers",
+    "galechurch>=0.1",
+    # PyTorch stopped at 2.2 on Intel Macs: that version was built against NumPy 1, and transformers 5 needs a newer one
+    "numpy<2; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+    "transformers<5; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+]
+
+[project.urls]
+Homepage = "https://github.com/steinst/SentAlign"
+Issues = "https://github.com/steinst/SentAlign/issues"
+
+[project.optional-dependencies]
+test = ["pytest"]
+rust = ["sentalign-rust"]      # the path-search kernel in Rust, for several cores: --path-backend rust
+
+[project.scripts]
+sentalign = "sentalign.cli:main"
+sentalign-files = "sentalign.files:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "sentalign.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: slow test (runs the aligner end to end)",
+    "gpu_or_cpu: runs the LaBSE model (cuda when enough memory is free, else cpu)",
+    "needs_fixtures: needs the large fixtures (tests/fetch_fixtures.py) or SENTALIGN_BOOK_FIXTURES",
+]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.c"]

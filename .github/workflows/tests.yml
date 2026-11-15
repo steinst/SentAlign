@@ -1,0 +1,93 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      end_to_end:
+        description: "Also run the slow end-to-end tests (downloads LaBSE, runs on CPU)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  fast:
+    # Build the Cython extensions and run everything that needs no model:
+    # characterisation replay against the golden files (mini fixtures), CLI basics, import checks.
+    name: fast / ${{ matrix.os }} / py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.12"]
+        include:
+          - os: ubuntu-latest
+            python: "3.10"
+          - os: ubuntu-latest
+            python: "3.14"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install CPU-only PyTorch
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          if [ "$RUNNER_OS" = "macOS" ]; then
+            pip install torch
+          else
+            pip install torch --index-url https://download.pytorch.org/whl/cpu
+          fi
+      - name: Build and install sentalign
+        run: pip install -e ".[test]"
+      - name: Build and install the optional Rust kernel
+        run: pip install ./rust
+      - name: Tests (no model needed)
+        run: pytest -m "not slow" -v -rs
+
+  end-to-end:
+    # Manual only: Actions tab -> tests -> Run workflow -> tick "end_to_end".
+    if: github.event_name == 'workflow_dispatch' && inputs.end_to_end
+    name: end-to-end / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    # LaBSE on the CPU of a runner: the 11 slow tests take 30 minutes on macOS; on Linux and Windows 120 minutes
+    # were enough for 6 or 7 of them
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    env:
+      SENTALIGN_ALLOW_DOWNLOAD: "1"
+      SENTALIGN_DEVICE: cpu
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Cache the LaBSE model
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/huggingface
+          key: hf-labse-${{ runner.os }}-v1
+      - name: Install CPU-only PyTorch
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          if [ "$RUNNER_OS" = "macOS" ]; then
+            pip install torch
+          else
+            pip install torch --index-url https://download.pytorch.org/whl/cpu
+          fi
+      - name: Build and install sentalign
+        run: pip install -e ".[test]"
+      - name: End-to-end tests against the golden files (CPU)
+        run: pytest -m slow -v -rs

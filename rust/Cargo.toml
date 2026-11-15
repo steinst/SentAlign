@@ -1,0 +1,20 @@
+[package]
+name = "sentalign-rust"
+version = "2.0.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Rust path-search kernel for SentAlign (optional backend)"
+repository = "https://github.com/steinst/SentAlign"
+
+[lib]
+name = "_core"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.29", features = ["abi3-py310", "extension-module"] }
+rayon = "1.10"
+
+[profile.release]
+lto = true
+codegen-units = 1
+# panic = "abort" is not set: PyO3 turns a Rust panic into a Python exception by unwinding.

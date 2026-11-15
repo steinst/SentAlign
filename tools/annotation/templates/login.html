@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alignment annotation</title>{% include 'base.css.html' %}</head>
+<body><main style="display:grid;place-items:center;min-height:90vh">
+<form method="post" action="/login" style="background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;width:min(340px,100%)">
+  <h1 style="margin:0 0 12px;font-size:20px">Alignment annotation</h1>
+  <p style="color:var(--muted);margin:0 0 14px;font-size:14px">SentAlign book test set</p>
+  <label>User name<br><input name="username" autofocus style="width:100%;padding:8px"></label><br><br>
+  <label>Password<br><input name="password" type="password" style="width:100%;padding:8px"></label><br><br>
+  <button class="primary" style="width:100%">Log in</button>
+  {% if wrong %}<p style="color:var(--flag)">Wrong user name or password.</p>{% endif %}
+</form></main></body></html>

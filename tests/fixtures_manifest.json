@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "archives": [
+    {
+      "name": "sentalign-fixtures-v1.tar.gz",
+      "url": "TO BE SET AFTER UPLOADING THE ARCHIVE TO A GITHUB RELEASE",
+      "sha256": "545cf875ecfb9482c87de493038f009ca242e4073d945a0da3c84557a7aa3a8d",
+      "size": 35632216,
+      "extract_to": "tests/fixtures/eval",
+      "description": "LaBSE embeddings (overlap text + float32 arrays) and stage results of all 17 evaluation files, written by the unchanged 2023 code (tag v1.0-paper)"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annotation progress</title>{% include 'base.css.html' %}</head>
+<body><header><h1>Annotation progress</h1><span class="sp"></span><a href="/">My windows</a><a href="/logout">Log out</a></header>
+<main><h2 style="font-size:16px">All windows</h2>
+<table><thead><tr><th>Annotator</th><th>Pair</th><th>Window</th><th>Role</th><th>Status</th><th>Time</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+<h2 style="font-size:16px">Agreement (doubly annotated, finished windows)</h2><div id="agr">computing…</div></main>
+<script>
+fetch('/api/assignments?all=1').then(r => r.json()).then(rows => {
+  const tb = document.getElementById('rows');
+  for (const r of rows) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.annotator}</td><td>${r.pair}</td><td>${r.window}</td><td>${r.role}</td><td>${r.status}</td>
+      <td>${Math.round(r.seconds / 60)} min</td><td><a href="/annotate/${encodeURIComponent(r.pair)}/${r.window}?of=${encodeURIComponent(r.annotator)}">view</a></td>`;
+    tb.appendChild(tr);
+  }
+});
+fetch('/api/admin/agreement').then(r => r.json()).then(a => {
+  const d = document.getElementById('agr');
+  if (!a.windows.length) { d.textContent = 'No doubly annotated window is finished yet.'; return; }
+  const f = x => x.toFixed(3);
+  d.innerHTML = `<p>All: F1 strict ${f(a.total.f1_strict)}, lax ${f(a.total.f1_lax)} over ${a.windows.length} windows.</p>` +
+    '<table><tr><th>Pair</th><th>Window</th><th>F1 strict</th><th>F1 lax</th></tr>' +
+    a.windows.map(w => `<tr><td>${w.pair}</td><td>${w.window}</td><td>${f(w.f1_strict)}</td><td>${f(w.f1_lax)}</td></tr>`).join('') + '</table>';
+});
+</script></body></html>

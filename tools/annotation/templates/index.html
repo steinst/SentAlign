@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alignment annotation</title>{% include 'base.css.html' %}</head>
+<body><header><h1>Alignment annotation</h1><span class="sp"></span><span>{{ user }}</span>
+{% if admin %}<a href="/admin">Progress</a>{% endif %}<a href="/logout">Log out</a></header>
+<main>
+<p style="color:var(--muted);max-width:60em">Each line is one window: a stretch of one text to align with the other.
+Open a window, link the sentences that translate each other, mark the ones without a counterpart, and press
+<b>Finish</b>. Your work is saved as you go; you can stop at any time. Guidelines: see the <i>Help</i> button in a window.</p>
+<table><thead><tr><th>Document pair</th><th>Languages</th><th>Window</th><th>Sentences</th><th>Status</th><th>Time</th><th></th></tr></thead>
+<tbody id="rows"></tbody></table>
+<p id="sum" style="color:var(--muted)"></p>
+</main>
+<script>
+fetch('/api/assignments').then(r => r.json()).then(rows => {
+  const tb = document.getElementById('rows'); let done = 0, secs = 0;
+  for (const r of rows) {
+    const tr = document.createElement('tr');
+    if (r.status === 'done') done++; secs += r.seconds;
+    tr.innerHTML = `<td>${r.pair}</td><td>${r.langs}</td><td>${r.window}${r.role === 'second' ? ' (second)' : ''}</td>
+      <td>${r.sentences}</td><td>${r.status}</td><td>${Math.round(r.seconds / 60)} min</td>
+      <td><a href="/annotate/${encodeURIComponent(r.pair)}/${r.window}">${r.status === 'done' ? 'look again' : 'open'}</a></td>`;
+    tb.appendChild(tr);
+  }
+  document.getElementById('sum').textContent = `${done} of ${rows.length} windows finished, ${Math.round(secs / 3600 * 10) / 10} hours.`;
+});
+</script></body></html>

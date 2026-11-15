@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.so
+*.so.reload1
+*.reload1
+# Cython output (generated at build time)
+*.c
+build/
+rust/target/
+dist/
+*.egg-info/
+.pytest_cache/
+# large test fixtures: download with tests/fetch_fixtures.py (tests/fixtures/mini/ is committed)
+tests/fixtures/eval/
+# run output inside the evaluation folders
+eval_data/*/output*
+eval_data/*/tmp
+eval_data/*/align_info
+eval_data/*/files2align.txt
+eval_data/*/filesdone.txt

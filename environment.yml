@@ -1,10 +1,17 @@
 name: SentAlign
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
-  - anaconda
 dependencies:
-  - python=3.8
-  - transformers=4.22.2
-  - numpy=1.22.1
-  - cython=0.29.27
-  - pytorch-gpu=1.13.0
+  - python=3.12
+  - transformers=4.35.0
+  - numpy>=1.26.0
+  - cython>=3.0.0
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=13.0
+  - pip
+  - pip:
+      - galechurch>=0.1      # Gale-Church alignment (anchoring and the --pathfinder galechurch baseline)

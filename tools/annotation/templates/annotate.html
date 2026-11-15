@@ -1,0 +1,332 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Align window</title>{% include 'base.css.html' %}
+<style>
+  .bar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding:8px 16px; border-bottom:1px solid var(--line);
+         position:sticky; top:0; background:var(--bg); z-index:5; }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:12px 16px; }
+  @media (max-width: 800px) { .cols { grid-template-columns:1fr; } }
+  .col h2 { font-size:14px; margin:0 0 6px; color:var(--muted); font-weight:600; display:flex; gap:8px; align-items:center; }
+  .list { height:calc(100vh - 190px); overflow-y:auto; border:1px solid var(--line); border-radius:6px; background:var(--card); }
+  .s { display:flex; gap:8px; padding:5px 8px; border-bottom:1px solid var(--line); cursor:pointer; user-select:none; }
+  .s.newp { border-top:2px solid var(--line); }
+  .s .no { color:var(--muted); font-size:12px; min-width:3.6em; text-align:right; padding-top:2px; }
+  .s .tx { flex:1; }
+  .s .bd { min-width:2.6em; text-align:center; font-size:12px; font-weight:700; border-radius:3px; padding:1px 3px; align-self:flex-start; }
+  .s.ctx { opacity:.45; }
+  .s.sel { background:var(--sel); }
+  .s.null .tx { text-decoration:line-through; text-decoration-color:var(--muted); color:var(--muted); }
+  .s.flag .no { color:var(--flag); font-weight:700; }
+  .s .bd.doubt { outline:2px solid var(--flag); }
+  #banner { display:none; margin:8px 16px 0; padding:6px 10px; border:1px solid var(--line); border-radius:6px; background:var(--sel); }
+  .s.hit { outline:2px solid var(--accent); outline-offset:-2px; }
+  .more { width:100%; border:0; border-bottom:1px solid var(--line); border-radius:0; color:var(--muted); }
+  #msg { color:var(--flag); }
+  #help { display:none; position:fixed; inset:60px 10% auto 10%; background:var(--card); border:1px solid var(--line);
+          border-radius:6px; padding:16px 20px; z-index:20; max-height:80vh; overflow:auto; box-shadow:0 8px 30px rgba(0,0,0,.25); }
+  #results { max-height:160px; overflow:auto; font-size:13px; }
+  #results div { cursor:pointer; padding:2px 4px; } #results div:hover { background:var(--sel); }
+  kbd { border:1px solid var(--line); border-radius:3px; padding:0 4px; font-size:12px; }
+</style></head>
+<body>
+<header><h1 id="title">…</h1><span class="sp"></span><span id="info" style="color:var(--muted)"></span>
+<a href="/">All windows</a><a href="/logout">Log out</a></header>
+<div class="bar">
+  <button class="primary" onclick="link()" title="L">Link <kbd>L</kbd></button>
+  <button onclick="markNull()" title="N">No counterpart <kbd>N</kbd></button>
+  <label><input type="checkbox" id="loose"> loose</label>
+  <button onclick="removeSelected()" title="Delete">Remove link / mark <kbd>Del</kbd></button>
+  <button onclick="undo()" title="U">Undo <kbd>U</kbd></button>
+  <button onclick="flag()" title="F">Flag segmentation <kbd>F</kbd></button>
+  <button onclick="clearSel()">Clear selection <kbd>Esc</kbd></button>
+  <button onclick="nextDoubtful()" title="J">Next doubtful link <kbd>J</kbd></button>
+  <span class="sp" style="flex:1"></span>
+  <span id="progress"></span>
+  <button onclick="document.getElementById('help').style.display='block'">Help</button>
+  <button class="primary" onclick="finish()">Finish</button>
+  <span id="msg"></span>
+</div>
+<div id="banner"></div>
+<div class="cols">
+  <div class="col"><h2 id="lefth"></h2><div class="list" id="left"></div></div>
+  <div class="col"><h2 id="righth"><span id="rightname"></span><input id="q" placeholder="search this text" style="flex:1;padding:3px 6px">
+    </h2><div id="results"></div><div class="list" id="right"></div></div>
+</div>
+<div style="padding:0 16px 16px"><label>Comment on this window<br>
+  <textarea id="comment" rows="2" style="width:100%" oninput="state.comment=this.value; changed()"></textarea></label></div>
+<div id="help">
+<h2 style="margin-top:0">How to annotate</h2>
+<ul>
+<li>The left column is the <b>window</b>: every sentence in it (the dark ones) must end up either in a link or marked
+<i>no counterpart</i>. The faded sentences before and after it are context; you may use them when a translation unit
+crosses the edge of the window.</li>
+<li>The right column is the other text, around the place where the window should be. Use <i>earlier / later</i> or the
+search box (names and numbers are good search terms) if the matching passage is not there.</li>
+<li><b>Link</b>: click the sentences on the left and on the right that translate each other (click again to unselect;
+shift-click selects a range), then press <kbd>L</kbd>. Link the <b>smallest</b> groups that translate each other: 1-1
+whenever possible; 1-2, 2-1, 2-2 … when the translator split or joined sentences. The sentences of a link must be
+consecutive.</li>
+<li>A sentence whose content is in the other text, even with details left out or added, is linked. A sentence with no
+counterpart (cut by the translator, added by the translator, a footnote, a page number) is <b>no counterpart</b>
+<kbd>N</kbd>. On the right, sentences between your links that you did not link count as no counterpart automatically.</li>
+<li>If a passage was rewritten so freely that the sentences do not correspond, link the whole passage on both sides
+as one group and tick <b>loose</b>.</li>
+<li>Headings link to headings. Links must keep the order of the texts (they cannot cross).</li>
+<li>The sentence boundaries are fixed. If a boundary is clearly wrong, select that sentence and press
+<kbd>F</kbd> to flag it, with a short note; then annotate as well as the boundaries allow.</li>
+<li>Click a link number to select the whole link; <kbd>Del</kbd> removes it (or removes a <i>no counterpart</i> mark).</li>
+<li>If the window is pre-filled, the links come from the aligner: they may be wrong or missing. Correct them. Links
+marked <b>?</b> have a low score; <kbd>J</kbd> jumps to the next one. Do not trust the others blindly: a pre-filled
+link is often right, but check the sentence boundaries and the edges of every 1-2 and 2-1 link.</li>
+</ul>
+<button onclick="document.getElementById('help').style.display='none'">Close</button>
+</div>
+<script>
+const PID = {{ pid|tojson }}, N = {{ n }};
+const params = new URLSearchParams(location.search);
+const OF = params.get('of');
+let D, state, side, other, readonly = false;
+let selL = new Set(), selR = new Set(), lastL = null, lastR = null;
+let history = [], dirty = false, saveTimer = null, activeSince = Date.now(), lastAction = Date.now(), pending = 0;
+let rightLoaded = [];   // sentence objects of the other side currently shown, sorted by i
+
+const DOUBT = 0.5;      // system links with a lower score are marked with ?
+const sideKey = s => s === 'src' ? 'src' : 'trg';
+function hue(k) { return (k * 137.5) % 360; }
+
+async function load() {
+  const r = await fetch(`/api/window/${encodeURIComponent(PID)}/${N}` + (OF ? `?of=${encodeURIComponent(OF)}` : ''));
+  D = await r.json();
+  side = D.side; other = side === 'src' ? 'trg' : 'src';
+  state = D.state; state.links ||= []; state.src_null ||= []; state.trg_null ||= []; state.flags ||= [];
+  readonly = !!OF && OF !== {{ user|tojson }};
+  const L = {src: D.meta.src_lang, trg: D.meta.trg_lang};
+  document.getElementById('title').textContent = `${PID} · window ${N}`;
+  document.getElementById('info').textContent = `${D.status}${readonly ? ' (viewing ' + D.owner + ')' : ''}`;
+  document.getElementById('lefth').textContent = `${side === 'src' ? 'Source' : 'Target'} (${L[side]}) · sentences ${D.window.start + 1}–${D.window.end}`;
+  document.getElementById('rightname').textContent = `${other === 'src' ? 'Source' : 'Target'} (${L[other]})`;
+  document.getElementById('comment').value = state.comment || '';
+  rightLoaded = D.other_sentences;
+  if (state.prefilled) {
+    const b = document.getElementById('banner');
+    b.style.display = 'block';
+    b.textContent = 'This window is pre-filled by the aligner. Check every link against the text and correct it ' +
+      '(remove, re-link, mark no counterpart). Links marked ? have a low system score. "Finish" confirms what you see.';
+  }
+  render();
+  // scroll the window start into view
+  const first = document.querySelector('#left .s:not(.ctx)'); if (first) first.scrollIntoView({block: 'start'});
+}
+
+function linkOf(s, i) { return state.links.findIndex(l => l[s].includes(i)); }
+function isNull(s, i) { return state[s + '_null'].includes(i); }
+function isFlag(s, i) { return state.flags.some(f => f.side === s && f.i === i); }
+
+function rowHTML(s, x, inWindow, prevP) {
+  const k = linkOf(s, x.i);
+  const cls = ['s'];
+  if (!inWindow) cls.push('ctx');
+  if ((s === side ? selL : selR).has(x.i)) cls.push('sel');
+  if (isNull(s, x.i)) cls.push('null');
+  if (isFlag(s, x.i)) cls.push('flag');
+  if (prevP !== null && prevP !== x.p) cls.push('newp');
+  const sc = k >= 0 ? state.links[k].score : undefined;
+  const doubt = sc !== undefined && sc < DOUBT;
+  const badge = k >= 0 ? `<span class="bd${doubt ? ' doubt' : ''}" data-link="${k}" title="${sc !== undefined ? 'system score ' + sc : 'your link'}" style="background:hsl(${hue(k)} 70% 75%);color:#222">${k + 1}${state.links[k].loose ? '~' : ''}${doubt ? '?' : ''}</span>` : '<span class="bd"></span>';
+  return `<div class="${cls.join(' ')}" data-side="${s}" data-i="${x.i}"><span class="no">${x.i + 1}</span>${badge}<span class="tx"></span></div>`;
+}
+
+function fill(el, s, rows, inWin) {
+  let html = '', prevP = null;
+  for (const x of rows) { html += rowHTML(s, x, inWin(x.i), prevP); prevP = x.p; }
+  el.innerHTML = html;
+  // texts set as textContent (no HTML from the books is interpreted)
+  const byI = new Map(rows.map(x => [x.i, x.text]));
+  for (const d of el.querySelectorAll('.s')) d.querySelector('.tx').textContent = byI.get(+d.dataset.i);
+}
+
+function render() {
+  const left = document.getElementById('left'), right = document.getElementById('right');
+  const ls = left.scrollTop, rs = right.scrollTop;
+  fill(left, side, D.window_sentences, i => i >= D.window.start && i < D.window.end);
+  fill(right, other, rightLoaded, () => true);
+  const up = document.createElement('button'); up.className = 'more'; up.textContent = '▲ earlier'; up.onclick = () => more(-1);
+  const dn = document.createElement('button'); dn.className = 'more'; dn.textContent = '▼ later'; dn.onclick = () => more(1);
+  right.prepend(up); right.append(dn);
+  left.scrollTop = ls; right.scrollTop = rs;
+  const covered = []; for (let i = D.window.start; i < D.window.end; i++) if (linkOf(side, i) >= 0 || isNull(side, i)) covered.push(i);
+  document.getElementById('progress').textContent = `${covered.length} / ${D.window.end - D.window.start} done · ${state.links.length} links`;
+}
+
+async function more(dir) {
+  if (!rightLoaded.length) return;
+  const which = other === 'src' ? 'source' : 'target';
+  const a = dir < 0 ? Math.max(0, rightLoaded[0].i - 100) : rightLoaded[rightLoaded.length - 1].i + 1;
+  const b = dir < 0 ? rightLoaded[0].i : a + 100;
+  if (b <= a) return;
+  const rows = await (await fetch(`/api/text/${encodeURIComponent(PID)}/${which}?from=${a}&to=${b}`)).json();
+  const right = document.getElementById('right'); const h = right.scrollHeight;
+  rightLoaded = dir < 0 ? rows.concat(rightLoaded) : rightLoaded.concat(rows);
+  render();
+  if (dir < 0) right.scrollTop += right.scrollHeight - h;
+}
+
+async function jumpTo(i) {
+  const which = other === 'src' ? 'source' : 'target';
+  const have = rightLoaded.some(x => x.i === i);
+  if (!have) {
+    const a = Math.max(0, i - 60), b = i + 60;
+    const rows = await (await fetch(`/api/text/${encodeURIComponent(PID)}/${which}?from=${a}&to=${b}`)).json();
+    const m = new Map(rightLoaded.map(x => [x.i, x])); for (const x of rows) m.set(x.i, x);
+    rightLoaded = [...m.values()].sort((p, q) => p.i - q.i);
+    render();
+  }
+  const el = document.querySelector(`#right .s[data-i="${i}"]`);
+  if (el) { el.scrollIntoView({block: 'center'}); el.classList.add('hit'); setTimeout(() => el.classList.remove('hit'), 2000); }
+}
+
+let qTimer = null;
+document.getElementById('q').addEventListener('input', e => {
+  clearTimeout(qTimer);
+  qTimer = setTimeout(async () => {
+    const q = e.target.value.trim(); const box = document.getElementById('results'); box.innerHTML = '';
+    if (q.length < 2) return;
+    const which = other === 'src' ? 'source' : 'target';
+    const hits = await (await fetch(`/api/search/${encodeURIComponent(PID)}/${which}?q=${encodeURIComponent(q)}`)).json();
+    for (const h of hits) {
+      const d = document.createElement('div'); d.textContent = `${h.i + 1}: ${h.text.slice(0, 120)}`;
+      d.onclick = () => jumpTo(h.i); box.appendChild(d);
+    }
+    if (!hits.length) box.textContent = 'not found';
+  }, 300);
+});
+
+function onClick(ev) {
+  if (readonly) return;
+  const badge = ev.target.closest('.bd[data-link]');
+  if (badge) { selectLink(+badge.dataset.link); return; }
+  const row = ev.target.closest('.s'); if (!row) return;
+  const s = row.dataset.side, i = +row.dataset.i;
+  const sel = s === side ? selL : selR;
+  const last = s === side ? lastL : lastR;
+  if (ev.shiftKey && last !== null) { for (let k = Math.min(last, i); k <= Math.max(last, i); k++) sel.add(k); }
+  else if (sel.has(i)) sel.delete(i); else sel.add(i);
+  if (s === side) lastL = i; else lastR = i;
+  render();
+}
+document.getElementById('left').addEventListener('click', onClick);
+document.getElementById('right').addEventListener('click', onClick);
+
+function selectLink(k) {
+  const l = state.links[k];
+  selL = new Set(l[side]); selR = new Set(l[other]);
+  document.getElementById('loose').checked = !!l.loose;
+  render();
+}
+function nextDoubtful() {
+  const doubtful = state.links.map((l, k) => [l, k]).filter(([l]) => l.score !== undefined && l.score < DOUBT)
+    .sort((a, b) => a[0][side][0] - b[0][side][0]);
+  if (!doubtful.length) return say('No doubtful links left.');
+  const cur = selL.size ? Math.max(...selL) : -1;
+  const [l, k] = doubtful.find(([l]) => l[side][0] > cur) || doubtful[0];
+  selectLink(k);
+  const el = document.querySelector(`#left .s[data-i="${l[side][0]}"]`);
+  if (el) el.scrollIntoView({block: 'center'});
+  jumpTo(l[other][0]);
+}
+function consecutive(a) { a = [...a].sort((x, y) => x - y); return a.every((v, k) => k === 0 || v === a[k - 1] + 1); }
+function say(t) { document.getElementById('msg').textContent = t; if (t) setTimeout(() => { if (document.getElementById('msg').textContent === t) say(''); }, 6000); }
+function snapshot() { history.push(JSON.stringify(state)); if (history.length > 200) history.shift(); }
+function changed() { dirty = true; edits++; lastAction = Date.now(); clearTimeout(saveTimer); saveTimer = setTimeout(() => save('draft'), 1500); }
+
+function link() {
+  if (!selL.size || !selR.size) return say('Select sentences on both sides first.');
+  if (!consecutive(selL) || !consecutive(selR)) return say('The sentences of a link must be consecutive.');
+  const ids = {[side]: [...selL].sort((a, b) => a - b), [other]: [...selR].sort((a, b) => a - b)};
+  // an existing link that is exactly the selection: just update "loose"
+  const same = state.links.findIndex(l => JSON.stringify(l.src) === JSON.stringify(ids.src) && JSON.stringify(l.trg) === JSON.stringify(ids.trg));
+  snapshot();
+  if (same >= 0) { state.links[same].loose = document.getElementById('loose').checked; }
+  else {
+    for (const s of ['src', 'trg']) for (const i of ids[s]) {
+      if (linkOf(s, i) >= 0) { history.pop(); return say(`Sentence ${i + 1} is already in link ${linkOf(s, i) + 1}; remove that first.`); }
+    }
+    for (const s of ['src', 'trg']) state[s + '_null'] = state[s + '_null'].filter(i => !ids[s].includes(i));
+    state.links.push({src: ids.src, trg: ids.trg, loose: document.getElementById('loose').checked});
+    state.links.sort((a, b) => a[side][0] - b[side][0]);
+  }
+  document.getElementById('loose').checked = false;
+  clearSel(); changed();
+}
+function markNull() {
+  if (!selL.size && !selR.size) return say('Select the sentences without a counterpart first.');
+  snapshot();
+  for (const [s, sel] of [[side, selL], [other, selR]]) for (const i of sel) {
+    if (linkOf(s, i) >= 0) continue;
+    if (!state[s + '_null'].includes(i)) state[s + '_null'].push(i);
+  }
+  clearSel(); changed();
+}
+function removeSelected() {
+  if (!selL.size && !selR.size) return;
+  snapshot();
+  for (const [s, sel] of [[side, selL], [other, selR]]) for (const i of sel) {
+    const k = linkOf(s, i); if (k >= 0) state.links.splice(k, 1);
+    state[s + '_null'] = state[s + '_null'].filter(x => x !== i);
+  }
+  clearSel(); changed();
+}
+function flag() {
+  const all = [...[...selL].map(i => [side, i]), ...[...selR].map(i => [other, i])];
+  if (all.length !== 1) return say('Select exactly one sentence to flag.');
+  const [s, i] = all[0];
+  const existing = state.flags.findIndex(f => f.side === s && f.i === i);
+  snapshot();
+  if (existing >= 0) { state.flags.splice(existing, 1); }
+  else { const note = prompt('What is wrong with the sentence boundary?', ''); if (note === null) { history.pop(); return; } state.flags.push({side: s, i, note}); }
+  clearSel(); changed();
+}
+function undo() { if (!history.length) return; state = JSON.parse(history.pop()); render(); changed(); }
+function clearSel() { selL.clear(); selR.clear(); lastL = lastR = null; render(); }
+
+// saves run one after another, and a pending autosave is cancelled by any save (a late draft must not undo Finish)
+let saveChain = Promise.resolve();
+// changes made, and how many of them the last successful save held; the status of that save
+let edits = 0, savedEdits = 0, savedStatus = null;
+function save(status) {
+  clearTimeout(saveTimer);
+  const run = saveChain.then(() => doSave(status));
+  saveChain = run.catch(() => false);
+  return run;
+}
+async function doSave(status) {
+  if (readonly) return;
+  // a draft with nothing new after Finish would only set the window back to draft (leaving the page while Finish
+  // is on its way asks for one)
+  if (status === 'draft' && savedStatus === 'done' && edits === savedEdits) return true;
+  const upTo = edits;
+  const now = Date.now();
+  // only active time counts: gaps longer than two minutes without any action are left out
+  const secs = Math.min((now - activeSince) / 1000, (now - lastAction) / 1000 < 120 ? (now - activeSince) / 1000 : 120);
+  activeSince = now;
+  const r = await fetch(`/api/window/${encodeURIComponent(PID)}/${N}`, {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({state, status, seconds: secs})});
+  const res = await r.json();
+  if (!res.ok) { say(res.problems.join(' · ')); return false; }
+  savedEdits = upTo; savedStatus = status;
+  dirty = edits !== savedEdits;       // a change made while the save was on its way is not saved yet
+  document.getElementById('info').textContent = status === 'done' ? 'done' : 'saved ' + new Date().toLocaleTimeString();
+  return true;
+}
+async function finish() { if (await save('done')) { say(''); document.getElementById('info').textContent = 'done ✓'; } }
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  const k = e.key.toLowerCase();
+  if (k === 'l') link(); else if (k === 'n') markNull(); else if (k === 'u') undo(); else if (k === 'f') flag(); else if (k === 'j') nextDoubtful();
+  else if (k === 'escape') { clearSel(); document.getElementById('help').style.display = 'none'; }
+  else if (k === 'delete' || k === 'backspace') { e.preventDefault(); removeSelected(); }
+  else return;
+});
+window.addEventListener('beforeunload', e => { if (dirty) { save('draft'); e.preventDefault(); } });
+load();
+</script></body></html>

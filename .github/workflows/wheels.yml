@@ -1,0 +1,388 @@
+name: wheels
+
+# Builds the wheels and source packages of sentalign and sentalign-rust for every supported system, installs each
+# wheel with its dependencies (CPU PyTorch) in a clean environment and aligns a text of the evaluation set with the
+# sentalign command, comparing the output with the golden files of SentAlign 1.0.
+# Manual, or when a version tag (v*) is pushed.  A manual run with "testpypi" ticked also uploads everything to
+# TestPyPI (trusted publishing, environment testpypi) and then installs from there on every system.  A pushed tag
+# v<version> uploads both packages to PyPI (environment pypi) and then installs from there on every system.
+on:
+  workflow_dispatch:
+    inputs:
+      testpypi:
+        description: "Upload to TestPyPI when all checks pass, then install from there on every system"
+        type: boolean
+        default: false
+      testpypi_name:
+        description: "Name of the sentalign distribution on TestPyPI (the name sentalign is taken there)"
+        default: "sentalign-steinst"
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+env:
+  # Only for an upload to TestPyPI: sentalign is built under this distribution name (the import name stays sentalign)
+  DIST_NAME: ${{ github.event_name == 'workflow_dispatch' && inputs.testpypi && inputs.testpypi_name || '' }}
+
+jobs:
+  sdist:
+    # the source package, installed once to check that the C extensions compile from it (they are optional, so
+    # a failed compilation would otherwise go unnoticed)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Distribution name for TestPyPI
+        if: env.DIST_NAME != ''
+        shell: bash
+        run: |
+          sed -i.bak "s/^name = \"sentalign\"$/name = \"$DIST_NAME\"/" pyproject.toml && rm pyproject.toml.bak
+          grep -q "^name = \"$DIST_NAME\"$" pyproject.toml
+      - run: pip install build && python -m build --sdist
+      - name: Install the source package and check the compiled parts
+        run: |
+          pip install numpy galechurch
+          pip install --no-deps -v dist/*.tar.gz
+          python tests/check_install.py
+      - uses: actions/upload-artifact@v6
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  wheels:
+    name: wheels / ${{ matrix.target.sys }}
+    runs-on: ${{ matrix.target.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - {os: ubuntu-latest, sys: linux-x86_64}
+          - {os: ubuntu-24.04-arm, sys: linux-aarch64}
+          - {os: macos-15-intel, sys: macos-x86_64}
+          - {os: macos-latest, sys: macos-arm64}
+          - {os: windows-latest, sys: windows-amd64}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Distribution name for TestPyPI
+        if: env.DIST_NAME != ''
+        shell: bash
+        run: |
+          sed -i.bak "s/^name = \"sentalign\"$/name = \"$DIST_NAME\"/" pyproject.toml && rm pyproject.toml.bak
+          grep -q "^name = \"$DIST_NAME\"$" pyproject.toml
+      - uses: pypa/cibuildwheel@v4.3.5
+        env:
+          CIBW_BUILD: "cp310-* cp311-* cp312-* cp313-* cp314-*"
+          CIBW_SKIP: "*-musllinux_*"
+          CIBW_ARCHS: native
+          # current NumPy ships no manylinux2014 wheels, and building it from source needs a newer compiler
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+          CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
+          # No test inside cibuildwheel: the wheels are installed with their dependencies in the check job below.
+      - uses: actions/upload-artifact@v6
+        with:
+          name: wheels-${{ matrix.target.sys }}
+          path: wheelhouse/*.whl
+
+  rust-sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: PyO3/maturin-action@v1
+        with:
+          working-directory: rust
+          command: sdist
+          args: --out dist
+      - uses: actions/upload-artifact@v6
+        with:
+          name: rust-sdist
+          path: rust/dist/*.tar.gz
+
+  rust-wheels:
+    # the optional package sentalign-rust (one abi3 wheel per system serves Python 3.10 and later)
+    name: rust wheels / ${{ matrix.target.sys }}
+    runs-on: ${{ matrix.target.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - {os: ubuntu-latest, sys: linux-x86_64}
+          - {os: ubuntu-24.04-arm, sys: linux-aarch64}
+          - {os: macos-15-intel, sys: macos-x86_64}
+          - {os: macos-latest, sys: macos-arm64}
+          - {os: windows-latest, sys: windows-amd64}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: PyO3/maturin-action@v1
+        with:
+          working-directory: rust
+          command: build
+          args: --release --out dist
+          manylinux: "2_28"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: rust-wheels-${{ matrix.target.sys }}
+          path: rust/dist/*.whl
+
+  check:
+    # Every wheel on its own system: installed with its dependencies in a fresh Python, then one alignment with the
+    # sentalign command (version 1 settings, Cython and Rust kernels) compared with the golden files, and one with the
+    # version 2 defaults.
+    name: check / ${{ matrix.target.sys }} / py${{ matrix.python }}
+    needs: [wheels, rust-wheels]
+    runs-on: ${{ matrix.target.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - {os: ubuntu-latest, sys: linux-x86_64}
+          - {os: ubuntu-24.04-arm, sys: linux-aarch64}
+          - {os: macos-15-intel, sys: macos-x86_64}
+          - {os: macos-latest, sys: macos-arm64}
+          - {os: windows-latest, sys: windows-amd64}
+        python: ["3.10", "3.12", "3.14"]
+        include:
+          - {target: {os: ubuntu-latest, sys: linux-x86_64}, python: "3.11"}
+          - {target: {os: ubuntu-latest, sys: linux-x86_64}, python: "3.13"}
+        exclude:
+          # PyTorch stopped at 2.2 for Intel Macs, which has no wheels for Python 3.13 and later
+          - {target: {os: macos-15-intel, sys: macos-x86_64}, python: "3.14"}
+    env:
+      SENTALIGN_ALLOW_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Cache the LaBSE model
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/huggingface
+          key: hf-labse-${{ runner.os }}-v1
+      - uses: actions/download-artifact@v7
+        with:
+          name: wheels-${{ matrix.target.sys }}
+          path: wheelhouse
+      - uses: actions/download-artifact@v7
+        with:
+          name: rust-wheels-${{ matrix.target.sys }}
+          path: rustdist
+      - name: Install CPU-only PyTorch
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          case "${{ matrix.target.sys }}" in
+            macos-x86_64) pip install torch ;;     # 2.2, the last for Intel Macs (the wheel limits NumPy and transformers)
+            macos-arm64)  pip install torch ;;
+            *)            pip install torch --index-url https://download.pytorch.org/whl/cpu ;;
+          esac
+      - name: Install the wheels with their dependencies
+        shell: bash
+        run: |
+          tag=cp$(python -c "import sys; print('%d%d' % sys.version_info[:2])")
+          ls wheelhouse/*-$tag-$tag-*.whl rustdist/*.whl
+          pip install wheelhouse/*-$tag-$tag-*.whl rustdist/*.whl
+          pip check
+          python tests/check_install.py --rust
+      - name: Align a text of the evaluation set and compare with the golden files
+        shell: bash
+        run: |
+          src=eval_data/bleualign/deu/test2.txt; trg=eval_data/bleualign/fra/test2.txt
+          for backend in cython rust; do
+            sentalign $src $trg -o out-$backend -sl deu -tl fra --proc-device cpu --compat paper-2023 \
+              --path-backend $backend
+            python tests/check_golden.py out-$backend tests/golden/v1_cpu/bleualign test2.txt
+          done
+          # no --proc-device: the runners have no CUDA device, so this is also the check that the CPU is then used
+          sentalign $src $trg -o out-v2 -sl deu -tl fra
+          test -s out-v2/test2.txt.path && test -s out-v2/test2.txt.aligned
+          grep -q '"proc_device": "cpu"' out-v2/test2.txt.json
+
+  publish-testpypi:
+    if: github.event_name == 'workflow_dispatch' && inputs.testpypi
+    needs: [sdist, rust-sdist, check]
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/${{ inputs.testpypi_name }}
+    permissions:
+      id-token: write          # trusted publishing
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          path: dist
+          merge-multiple: true
+      # One upload per package: a token from trusted publishing is valid for one project only.
+      - name: Separate the two packages
+        run: |
+          mkdir dist-rust && mv dist/sentalign_rust-* dist-rust/
+          ls -l dist-rust dist
+      - name: Upload sentalign-rust
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: dist-rust/
+          skip-existing: true
+      - name: Upload sentalign
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: dist/
+          skip-existing: true
+
+  testpypi-install:
+    # pip install from TestPyPI (with the dependencies from PyPI) on every system, then one alignment
+    name: install from TestPyPI / ${{ matrix.target.sys }}
+    needs: publish-testpypi
+    runs-on: ${{ matrix.target.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - {os: ubuntu-latest, sys: linux-x86_64}
+          - {os: ubuntu-24.04-arm, sys: linux-aarch64}
+          - {os: macos-15-intel, sys: macos-x86_64}
+          - {os: macos-latest, sys: macos-arm64}
+          - {os: windows-latest, sys: windows-amd64}
+    env:
+      SENTALIGN_ALLOW_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Cache the LaBSE model
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/huggingface
+          key: hf-labse-${{ runner.os }}-v1
+      - name: Install CPU-only PyTorch and the other dependencies from PyPI
+        # first, so that pip takes none of them from TestPyPI, where anyone can upload a package of the same name
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          case "${{ matrix.target.sys }}" in
+            macos-x86_64) pip install torch "numpy<2" "transformers<5" ;;     # what sentalign asks for there
+            macos-arm64)  pip install torch ;;
+            *)            pip install torch --index-url https://download.pytorch.org/whl/cpu ;;
+          esac
+          pip install numpy transformers "galechurch>=0.1"
+      - name: pip install from TestPyPI
+        shell: bash
+        run: |
+          version=$(sed -n 's/^__version__ = "\(.*\)"/\1/p' src/sentalign/__init__.py)
+          # the index may need a moment after the upload
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            pip install --no-cache-dir -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ \
+              "$DIST_NAME[rust]==$version" "sentalign-rust==$version" && break
+            test $i = 10 && exit 1
+            sleep 30
+          done
+          pip check
+          python tests/check_install.py --rust
+      - name: Align a text of the evaluation set and compare with the golden files
+        shell: bash
+        run: |
+          src=eval_data/bleualign/deu/test2.txt; trg=eval_data/bleualign/fra/test2.txt
+          sentalign $src $trg -o out -sl deu -tl fra --proc-device cpu --compat paper-2023 --path-backend rust
+          python tests/check_golden.py out tests/golden/v1_cpu/bleualign test2.txt
+
+  publish-pypi:
+    # the release: a pushed tag v<version> uploads both packages to PyPI when every check has passed
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: [sdist, rust-sdist, check]
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/sentalign
+    permissions:
+      id-token: write          # trusted publishing
+    steps:
+      - uses: actions/checkout@v5
+      - name: The tag must name the version of both packages
+        run: |
+          version=$(sed -n 's/^__version__ = "\(.*\)"/\1/p' src/sentalign/__init__.py)
+          rust_version=$(sed -n 's/^version = "\(.*\)"/\1/p' rust/pyproject.toml)
+          echo "tag $GITHUB_REF_NAME, sentalign $version, sentalign-rust $rust_version"
+          test "$GITHUB_REF_NAME" = "v$version" && test "$rust_version" = "$version"
+      - uses: actions/download-artifact@v7
+        with:
+          path: dist
+          merge-multiple: true
+      # One upload per package (a token is valid for one project only); sentalign-rust first, so that
+      # sentalign[rust] can be installed as soon as sentalign is there.
+      - name: Separate the two packages
+        run: |
+          mkdir dist-rust && mv dist/sentalign_rust-* dist-rust/
+          ls -l dist-rust dist
+      - name: Upload sentalign-rust
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist-rust/
+          skip-existing: true
+      - name: Upload sentalign
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          skip-existing: true
+
+  pypi-install:
+    # pip install sentalign[rust] from PyPI on every system after the release, then one alignment
+    name: install from PyPI / ${{ matrix.target.sys }}
+    needs: publish-pypi
+    runs-on: ${{ matrix.target.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - {os: ubuntu-latest, sys: linux-x86_64}
+          - {os: ubuntu-24.04-arm, sys: linux-aarch64}
+          - {os: macos-15-intel, sys: macos-x86_64}
+          - {os: macos-latest, sys: macos-arm64}
+          - {os: windows-latest, sys: windows-amd64}
+    env:
+      SENTALIGN_ALLOW_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Cache the LaBSE model
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/huggingface
+          key: hf-labse-${{ runner.os }}-v1
+      - name: Install CPU-only PyTorch on Linux and Windows (the default there is the CUDA build)
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          case "${{ matrix.target.sys }}" in
+            linux-*|windows-*) pip install torch --index-url https://download.pytorch.org/whl/cpu ;;
+          esac
+      - name: pip install from PyPI
+        shell: bash
+        run: |
+          version=$(sed -n 's/^__version__ = "\(.*\)"/\1/p' src/sentalign/__init__.py)
+          # the index may need a moment after the upload
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            pip install --no-cache-dir "sentalign[rust]==$version" && break
+            test $i = 10 && exit 1
+            sleep 30
+          done
+          pip check
+          python tests/check_install.py --rust
+      - name: Align a text of the evaluation set and compare with the golden files
+        shell: bash
+        run: |
+          src=eval_data/bleualign/deu/test2.txt; trg=eval_data/bleualign/fra/test2.txt
+          sentalign $src $trg -o out -sl deu -tl fra --compat paper-2023 --path-backend rust
+          python tests/check_golden.py out tests/golden/v1_cpu/bleualign test2.txt

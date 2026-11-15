@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
 """
+Copyright 2019 Brian Thompson
+
+This file is based on score.py of Vecalign (https://github.com/thompsonb/vecalign); it was adapted for SentAlign
+(the scoring of null alignments, the command line).
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -30,10 +35,19 @@ Recall is calculated as the number of correct alignments divided by the number o
 Lax precision and recall are calculated as precision and recall, but with the following relaxation:
 
     - a test alignment is considered correct if it overlaps with a gold alignment on the source side
-        and on the target side
-    - a gold alignment is considered correct if it overlaps with a test alignment on the source side
+        and on the target side (lax precision)
+    - a gold alignment is considered found if it overlaps with a test alignment on the source side
+        and on the target side (lax recall; as the evaluation of Bleualign and score.py of Vecalign)
 
+The evaluation script of SentAlign 1.0 (the 2023 paper) computed lax recall differently: lax true positives of the
+test alignments / (those + gold alignments without an exact match).  A gold alignment that was only found under
+the lax condition counted as missed there, so lax recall and lax F1 came out lower (German-French 0.933 / 0.964
+instead of 0.980 / 0.989).  ``--lax-recall paper-2023`` (``lax_recall='paper-2023'``) gives those numbers; strict
+scores and lax precision are the same in both.
 """
+
+LAX_RECALL = ('standard', 'paper-2023')
+
 
 def read_alignments(fin):
     alignments = []
@@ -56,7 +70,8 @@ def read_alignments(fin):
 
 def _precision(goldalign, testalign):
     """
-    Computes tpstrict, fpstrict, tplax, fplax for gold/test alignments
+    Computes tpstrict, fpstrict, tplax, fplax for gold/test alignments, and the number of gold alignments
+    without an exact match (the "false negatives" of the 2023 lax recall)
     """
     tpstrict = 0  # true positive strict counter
     tplax = 0     # true positive lax counter
@@ -100,14 +115,21 @@ def _precision(goldalign, testalign):
             else:
                 fpstrict += 1
                 fplax += 1
-        fn = len(list(goldalign - set(goldaligns_in_test)))
+    # paper-2023 lax recall only: the gold alignments that are not among the matched *test* alignments, i.e. those
+    # without an exact match
+    fn = len(goldalign - set(goldaligns_in_test))
 
     return np.array([tpstrict, fpstrict, tplax, fplax, fn], dtype=np.int32)
 
 
-def score_multiple(gold_list, test_list, keep_nulls, value_for_div_by_0=0.0):
+def score_multiple(gold_list, test_list, keep_nulls, value_for_div_by_0=0.0, lax_recall='standard'):
+    """Scores over all gold/test files together.  `keep_nulls` True (the default of the command line) leaves the
+    null alignments out.  `lax_recall`: 'standard' (Bleualign, Vecalign) or 'paper-2023' (see the top of the file)."""
+    if lax_recall not in LAX_RECALL:
+        raise ValueError('lax_recall must be one of %s (got %r)' % (', '.join(LAX_RECALL), lax_recall))
     # accumulate counts for all gold/test files
     counts = np.array([0, 0, 0, 0, 0], dtype=np.int32)
+    rcounts = np.array([0, 0, 0, 0], dtype=np.int32)
     tp_fp = 0
     tp_fn = 0
     # rcounts = np.array([0, 0, 0, 0], dtype=np.int32)
@@ -118,6 +140,8 @@ def score_multiple(gold_list, test_list, keep_nulls, value_for_div_by_0=0.0):
             goldalign = [(x, y) for x, y in goldalign if len(x) and len(y)]
 
         counts += _precision(goldalign=goldalign, testalign=testalign)
+        # recall is precision with the arguments swapped (on the same alignments as the other scores)
+        rcounts += _precision(goldalign=testalign, testalign=goldalign)[:4]
         tp_fp += len(testalign)
         tp_fn += len(goldalign)
 
@@ -145,15 +169,20 @@ def score_multiple(gold_list, test_list, keep_nulls, value_for_div_by_0=0.0):
     else:
         plax = counts[2] / float(counts[2] + counts[3])
 
-    if counts[0] + counts[1] == 0:
+    if counts[0] + counts[1] == 0 or tp_fn == 0:
         rstrict = value_for_div_by_0
     else:
         rstrict = counts[0] / float(tp_fn)
 
-    if counts[2] + counts[3] == 0:
+    if lax_recall == 'paper-2023':
+        if counts[2] + counts[3] == 0 or counts[2] + counts[4] == 0:
+            rlax = value_for_div_by_0
+        else:
+            rlax = counts[2] / float(counts[2] + counts[4])
+    elif rcounts[2] + rcounts[3] == 0:
         rlax = value_for_div_by_0
     else:
-        rlax = counts[2] / float(counts[2] + counts[4])
+        rlax = rcounts[2] / float(rcounts[2] + rcounts[3])
 
     if (pstrict + rstrict) == 0:
         fstrict = value_for_div_by_0
@@ -184,6 +213,49 @@ def log_final_scores(res):
     print(' ---------------------------------', file=sys.stderr)
 
 
+EVALUATION_SETS = {
+    'bleualign': ('the German-French Text+Berg evaluation set (Bleualign)',
+                  'Sennrich, R. and Volk, M. (2010). MT-based Sentence Alignment for OCR-generated Parallel Texts. AMTA 2010.',
+                  '''@inproceedings{Sennrich2010MTbasedSA,
+    title = {{MT-based Sentence Alignment for OCR-generated Parallel Texts}},
+    author = "Rico Sennrich and Martin Volk",
+    booktitle = "Proceedings of the 9th Conference of the Association for Machine Translation in the Americas: Research Papers",
+    address = "Denver, Colorado",
+    year = "2010",
+    publisher = "Association for Machine Translation in the Americas",
+    url = "https://aclanthology.org/2010.amta-papers.14",
+}'''),
+    'parice': ('the English-Icelandic ParIce evaluation set',
+               'Barkarson, S. and Steingrímsson, S. (2019). Compiling and Filtering ParIce: An English-Icelandic '
+               'Parallel Corpus. NoDaLiDa 2019; and the SentAlign paper, where the evaluation set was first used.',
+               '''@inproceedings{barkarson-steingrimsson-2019-compiling,
+    title = {{Compiling and Filtering {P}ar{I}ce: An {E}nglish-{I}celandic Parallel Corpus}},
+    author = "Barkarson, Starka{\\dh}ur and Steingr{\\'\\i}msson, Stein{\\th}{\\'o}r",
+    booktitle = "Proceedings of the 22nd Nordic Conference on Computational Linguistics",
+    year = "2019",
+    address = "Turku, Finland",
+    publisher = {Link{\\"o}ping University Electronic Press},
+    url = "https://aclanthology.org/W19-6115",
+    pages = "140--145",
+}'''),
+}
+
+
+def print_citations(gold_files, bibtex=False):
+    """Say which publication to cite for the evaluation set that was used (recognised by the folder name; both
+    are named when it cannot be recognised)."""
+    names = [k for k in EVALUATION_SETS if any(k in f.lower() for f in gold_files)] or list(EVALUATION_SETS)
+    print('\nIf you report these results, please cite the evaluation set:', file=sys.stderr)
+    for k in names:
+        print('  [%s] %s' % EVALUATION_SETS[k][:2], file=sys.stderr)
+    if bibtex:
+        print('\nBibTeX:\n', file=sys.stderr)
+        for k in names:
+            print(EVALUATION_SETS[k][2] + '\n', file=sys.stderr)
+    else:
+        print('(--bibtex prints the BibTeX entries)', file=sys.stderr)
+
+
 def main():
     parser = argparse.ArgumentParser(
         'Compute strict/lax precision and recall for one or more pairs of gold/test alignments',
@@ -198,6 +270,14 @@ def main():
     parser.add_argument('-n', '--nulls', action='store_false',
                         help='use null alignments')
 
+    parser.add_argument('--lax-recall', choices=LAX_RECALL, default='standard',
+                        help='standard: a gold alignment is found if a test alignment overlaps it on both sides '
+                             '(Bleualign, Vecalign); paper-2023: the computation of the SentAlign 1.0 script, for '
+                             'the numbers of the 2023 paper')
+
+    parser.add_argument('--bibtex', action='store_true',
+                        help='also print the BibTeX entries of the evaluation sets to cite')
+
     args = parser.parse_args()
     #print(args.nulls)
 
@@ -207,8 +287,12 @@ def main():
     gold_list = [read_alignments(x) for x in args.gold]
     test_list = [read_alignments(x) for x in args.test]
 
-    res = score_multiple(gold_list=gold_list, test_list=test_list, keep_nulls=args.nulls)
+    res = score_multiple(gold_list=gold_list, test_list=test_list, keep_nulls=args.nulls, lax_recall=args.lax_recall)
     log_final_scores(res)
+    if args.lax_recall == 'paper-2023':
+        print('lax recall and F1 as computed for the 2023 paper (not comparable with Bleualign / Vecalign scores)',
+              file=sys.stderr)
+    print_citations(args.gold, args.bibtex)
 
 
 if __name__ == '__main__':

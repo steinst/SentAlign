@@ -1,0 +1,20 @@
+<style>
+  :root { --bg:#f6f4ef; --card:#fffdf8; --ink:#22201c; --muted:#6d675c; --line:#d9d3c5; --accent:#8a3b12;
+          --sel:#fde7a8; --null:#e9e6df; --flag:#b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#191815; --card:#22201c; --ink:#ece7dc; --muted:#a39c8d; --line:#3a372f; --accent:#e0915f;
+            --sel:#5a4a1c; --null:#2c2a25; --flag:#ff8a80; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 system-ui, sans-serif; }
+  header { display:flex; gap:16px; align-items:center; padding:10px 16px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  header h1 { font-size:17px; margin:0; font-weight:600; }
+  header .sp { flex:1; }
+  a { color:var(--accent); }
+  button { font:inherit; padding:6px 12px; border:1px solid var(--line); border-radius:4px; background:var(--card);
+           color:var(--ink); cursor:pointer; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  table { border-collapse:collapse; width:100%; }
+  td, th { padding:5px 8px; border-bottom:1px solid var(--line); text-align:left; font-size:14px; }
+  main { padding:16px; }
+</style>

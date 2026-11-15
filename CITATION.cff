@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use SentAlign, please cite the paper below (SentAlign prints what else to cite for a run)."
+type: software
+title: SentAlign
+abstract: "Sentence alignment of parallel corpora with LaBSE embeddings and an exact path search."
+authors:
+  - family-names: Steingrímsson
+    given-names: Steinþór
+version: 2.0.0
+date-released: 2026-11-15
+license: Apache-2.0
+repository-code: "https://github.com/steinst/SentAlign"
+keywords:
+  - sentence alignment
+  - parallel corpora
+  - machine translation
+  - LaBSE
+preferred-citation:
+  type: conference-paper
+  title: "SentAlign: Accurate and Scalable Sentence Alignment"
+  authors:
+    - family-names: Steingrímsson
+      given-names: Steinþór
+    - family-names: Loftsson
+      given-names: Hrafn
+    - family-names: Way
+      given-names: Andy
+  collection-title: "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing: System Demonstrations"
+  publisher:
+    name: Association for Computational Linguistics
+  conference:
+    name: EMNLP 2023
+    city: Singapore
+  year: 2023
+  month: 12
+  start: 256
+  end: 263
+  doi: 10.18653/v1/2023.emnlp-demo.22
+  url: "https://aclanthology.org/2023.emnlp-demo.22/"

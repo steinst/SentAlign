@@ -1,0 +1,13 @@
+SentAlign
+Copyright 2023-2026 Steinþór Steingrímsson
+
+This product includes software developed by others:
+
+* Vecalign (https://github.com/thompsonb/vecalign), Copyright 2019 Brian Thompson, licensed under the Apache
+  License, Version 2.0.
+  - src/sentalign/pathfinding/_vecalign.py and _vecalign_core.pyx: Vecalign's search (dp_utils.py, dp_core.pyx);
+    _vecalign_core_py.py is a Python version of the compiled functions written for SentAlign.
+  - evaluation/evaluate.py: based on Vecalign's score.py.
+  - src/sentalign/legacy/overlap_files.py: three functions for overlapping sentences (overlap.py, dp_utils.py).
+
+The evaluation data in eval_data/ is not part of the software and has its own terms: see eval_data/README.md.

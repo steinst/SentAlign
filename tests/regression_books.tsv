@@ -1,0 +1,13 @@
+number	name	en_sentences	is_sentences	million_nodes	v1_path_at_default_settings	ref_aligned_pairs	ref_share_en	ref_share_is	ref_mean_score	ref_longest_gap_en	ref_longest_gap_is	ref_method	why_included
+1311	1311_Dahl-Roald_Fantastic-Mr-Fox	989	1105	1.1	small (<4M nodes)	959	0.981	0.942	0.768	5	39	whole book	small, no anchors
+696	696_Bach-Richard_Jonathan-Livingston-Seagull	670	750	0.5	small (<4M nodes)	655	0.994	0.957	0.797	1	13	whole book	small, no anchors
+1360	1360_Hemingway-Ernest_The-Old-Man-and-the-Sea	1891	1916	3.6	small (<4M nodes)	1834	0.990	0.983	0.771	2	13	whole book	small, no anchors (3.6 M nodes)
+266	266_London-Jack_Call-of-the-Wild	1710	1838	3.1	small (<4M nodes)	1477	0.924	0.947	0.672	4	6	whole book	small, no anchors; loose translation
+1379	1379_Hemingway-Ernest_A-Moveable-Feast	2783	2891	8.0	mid (>4M nodes, <=10000 sentences)	2677	0.982	0.964	0.779	11	55	whole book	mid-size path; segfault twice in the batch run; wrong anchor on the large path
+956	956_Gibran-Kahlil_Jesus-the-Son-of-Man	2683	2912	7.8	mid (>4M nodes, <=10000 sentences)	2343	0.936	0.935	0.719	45	54	whole book	mid-size path; segfault twice in the batch run
+617	617_Kipling-Rudyard_Captains-Courageous	3835	2940	11.3	mid (>4M nodes, <=10000 sentences)	2226	0.670	0.896	0.640	70	6	whole book	mid-size; wrong anchor skipped 611 English sentences
+1006	1006_Rowling-J-K_Harry-Potter-and-the-Chamber-of-Secrets	6914	6856	47.4	mid (>4M nodes, <=10000 sentences)	6406	0.985	0.991	0.790	10	19	whole book	mid-size at default settings (silent death); large path with -maxgc 5000
+844	844_Austen-Jane_Pride-and-Prejudice	6094	6716	40.9	mid (>4M nodes, <=10000 sentences)	5731	0.985	0.947	0.746	2	238	chapter-split	mid-size with -maxgc 10000 (segfault); large path otherwise
+495	495_Hardy-Thomas_Tess-of-the-Durbervilles	7960	9764	77.7	mid (>4M nodes, <=10000 sentences)	7709	0.991	0.908	0.786	4	607	chapter-split	large; split alignment gained most (72/66 -> 99/91)
+2053	2053_Steinbeck-John_The-Grapes-of-Wrath	19472	19318	376.2	large (>10000 sentences)	17676	0.946	0.956	0.711	23	57	chapter-split	large; one third of the book skipped by a wrong anchor
+405	405_406_407_Galsworthy-John_The-Forsyte-Saga-complete	21957	23621	518.6	large (>10000 sentences)	19211	0.932	0.964	0.714	13	44	chapter-split	largest (three Icelandic volumes)

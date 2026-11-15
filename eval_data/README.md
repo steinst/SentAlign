@@ -17,6 +17,10 @@ The bleualign folder contains the manually aligned German-French evaluation set 
 }
 ```
 
+The Bleualign evaluation data is distributed with Bleualign and Vecalign under the GNU General Public License,
+version 2; it is data, not part of the SentAlign software, and keeps that licence here. `evaluation/evaluate.py`
+prints the paper to cite when the set is used (`--bibtex` for the entry).
+
 ### ParIce evaluation set
 The parice folder contains an evaluation set for English-Icelandic sentence alignment from 10 aligned documents in five subcorpora of the ParIce corpus. The evaluation set is [distributed](https://repository.clarin.is/repository/xmlui/handle/20.500.12537/150) under a CC BY 4.0 license. If you use that evaluation set, please consider citing the ParIce paper and the SentAlign paper where the evaluation set was first used.
 
@@ -46,8 +50,11 @@ The SentAlign paper:
     booktitle = "Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
     month = dec,
     year = "2023",
-    address = "Singapore, Singapore",
+    address = "Singapore",
     publisher = "Association for Computational Linguistics",
+    pages = "256--263",
+    doi = "10.18653/v1/2023.emnlp-demo.22",
+    url = "https://aclanthology.org/2023.emnlp-demo.22/",
 }
 ```
 
